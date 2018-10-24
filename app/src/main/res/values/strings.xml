@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DxracerCRM</string>
+    <string name="username_et_hint">请输入用户名</string>
+    <string name="password_et_hint">请输入密码</string>
+    <string name="login_btn_text">登   录</string>
+    <string name="title">CRM</string>
+    <string name="progressDialog_login">正在登录...</string>
+</resources>

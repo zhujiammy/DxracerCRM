@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.design.widget.AppBarLayout
+        android:visibility="visible"
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center"
+                android:textColor="@color/BLAK"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                />
+        </android.support.v7.widget.Toolbar>
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="115dp">
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/dxracer_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:textColor="@color/BLAK"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    />
+
+            </RelativeLayout>
+
+            <com.example.dxracer.dxracercrm.Tools.ClearEditText
+                android:drawableLeft="@mipmap/admin_logo"
+                android:id="@+id/username_et"
+                android:theme="@style/MyEditText"
+                android:singleLine="true"
+                android:hint="@string/username_et_hint"
+                android:textColorHint="@color/base"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+            <com.example.dxracer.dxracercrm.Tools.ClearEditText
+                android:drawableLeft="@mipmap/passlogo"
+                android:id="@+id/password_et"
+                android:singleLine="true"
+                android:hint="@string/password_et_hint"
+                android:textColorHint="@color/base"
+                android:theme="@style/MyEditText"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/login_btn"
+                android:background="@drawable/loginbtn_drawable"
+                android:textColor="@color/white"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/login_btn_text"
+                />
+
+
+            <RelativeLayout
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:id="@+id/register_btn"
+                    android:textSize="17sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注  册"
+                    />
+
+                <TextView
+                    android:id="@+id/fpass"
+                    android:textSize="17sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="忘记密码"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>
