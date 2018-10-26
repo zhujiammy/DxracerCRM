@@ -2,7 +2,7 @@
 <resources>
     <color name="def_bg">#f4f4f4</color>
     <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorPrimaryDark">#2942af</color>
     <color name="colorAccent">#009688</color>
     <color name="base">#AAAAAA</color>
     <color name="monsoon">#777777</color>
