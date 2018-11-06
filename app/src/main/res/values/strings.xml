@@ -3,6 +3,21 @@
     <string name="username_et_hint">请输入用户名</string>
     <string name="password_et_hint">请输入密码</string>
     <string name="login_btn_text">登   录</string>
-    <string name="title">CRM</string>
+    <string name="title">DXRacerSMS</string>
     <string name="progressDialog_login">正在登录...</string>
+    <string name="clue_number">线索编号:</string>
+    <string name="edit">编辑</string>
+    <string name="Customerinformation">客户信息</string>
+    <string name="news">消息</string>
+    <string name="maillist">通讯录</string>
+    <string name="workbench">工作台</string>
+    <string name="statistics">统计</string>
+    <string name="more">更多</string>
+    <string name="add_customers">录线索</string>
+    <string name="Write">写跟进</string>
+    <string name="buildingtask">建任务</string>
+    <string name="writeorder">录订单</string>
+    <string name="writerjournal">写日志</string>
+    <string name="cuemanagement">线索管理</string>
+
 </resources>

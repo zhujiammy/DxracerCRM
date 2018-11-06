@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
                 //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
                 Window window = activity.getWindow();
                 View decorView = window.getDecorView();
-                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                //两个flag要结合使用,表示让应用的主体内容占用系统状态栏的空间
                 int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
                 decorView.setSystemUiVisibility(option);
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
 
     @Override
     public void onClick(View v) {
+
         if(v == login_bt){
             progressDialog = new ProgressDialog(LoginActivity.this,
                     R.style.AppTheme_Dark_Dialog);
@@ -129,5 +130,6 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
             progressDialog.show();
             presenter.login(username_et.getText().toString(),password_et.getText().toString());
         }
+
     }
 }
