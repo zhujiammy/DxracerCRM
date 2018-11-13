@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/blue1"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ToolbarTheme">
+
+          <RadioGroup
+              android:padding="1dp"
+              android:background="@drawable/cut_line"
+              android:orientation="horizontal"
+              android:layout_gravity="center"
+              android:layout_width="150dp"
+              android:layout_height="30dp">
+
+              <RadioButton
+                  android:checked="true"
+                  android:id="@+id/publiccue"
+                  android:button="@null"
+                  android:gravity="center"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+
+                  android:background="@drawable/textview_setbackground"
+                  android:text="@string/publiccue"
+                  android:textColor="@drawable/textcolor_select"
+                  />
+              <RadioButton
+                  android:id="@+id/privatecue"
+                  android:background="@drawable/textview_setbackground"
+                  android:button="@null"
+                  android:gravity="center"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:textColor="@drawable/textcolor_select"
+                  android:text="@string/privatecue"
+                  />
+
+          </RadioGroup>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titlebar"
+        android:layout_above="@id/tab" />
+</LinearLayout>

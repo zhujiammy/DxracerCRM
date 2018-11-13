@@ -13,20 +13,44 @@ import com.example.dxracer.dxracercrm.R;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter {
-    //先定义两个ItemViewType，0代表头，1代表表格中间的部分
+public class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener {
     //数据源
     private List<HomeIconModel> dataList;
-
     //构造函数
     public MyAdapter(List<HomeIconModel> dataList) {
         this.dataList = dataList;
     }
+    private OnitemClickListener onitemClickListener=null;
+
+    public void setOnitemClickListener(OnitemClickListener onitemClickListener) {
+        this.onitemClickListener = onitemClickListener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(onitemClickListener!=null){
+            onitemClickListener.onItemClick(v,(int)v.getTag());
+        }
+    }
+
+
+    public static interface OnitemClickListener{
+        void onItemClick(View view, int position);
+    }
+
+
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         //在onCreateViewHolder方法中，我们要根据不同的ViewType来返回不同的ViewHolder
-            return new BodyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_item, null));
+
+        View baseView;
+
+        baseView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_item, viewGroup, false);
+        BodyViewHolder bodyViewHolder = new BodyViewHolder(baseView);
+        baseView.setOnClickListener(this);
+        return bodyViewHolder;
     }
 
     @Override
@@ -35,6 +59,8 @@ public class MyAdapter extends RecyclerView.Adapter {
             //其他条目中的逻辑在此
             ((BodyViewHolder) viewHolder).textView.setText(dataList.get(position).getText());
             ((BodyViewHolder) viewHolder).imageView.setImageBitmap(dataList.get(position).getBitmap());
+            viewHolder.itemView.setTag(position);
+
 
     }
 

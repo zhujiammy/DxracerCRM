@@ -19,5 +19,7 @@
     <string name="writeorder">录订单</string>
     <string name="writerjournal">写日志</string>
     <string name="cuemanagement">线索管理</string>
+    <string name="publiccue">公有线索</string>
+    <string name="privatecue">私有线索</string>
 
 </resources>

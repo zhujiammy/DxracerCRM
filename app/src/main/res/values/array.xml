@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="region">
+        <item>中西区</item>
+        <item>湾仔区</item>
+        <item>葵青区</item>
+        <item>离岛区</item>
+    </string-array>
+</resources>

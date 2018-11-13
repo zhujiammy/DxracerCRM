@@ -1,5 +1,7 @@
 package com.example.dxracer.dxracercrm.Interface;
 
+import android.content.Context;
+
 public interface LoginInterface {
 
     //Model
@@ -15,6 +17,6 @@ public interface LoginInterface {
     }
     //presenter
     interface Presenter{
-        void login(String username,String password);
+        void login(String url, String username, String password);
     }
 }

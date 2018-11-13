@@ -1,8 +1,5 @@
 package com.example.dxracer.dxracercrm.View;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,16 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dxracer.dxracercrm.Adapter.MyAdapter;
-import com.example.dxracer.dxracercrm.Model.HomeIconModel;
+import com.example.dxracer.dxracercrm.Interface.WorkBenchInterface;
+import com.example.dxracer.dxracercrm.Presenter.WorkBenchPresenter;
 import com.example.dxracer.dxracercrm.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WorkBenchFragment extends Fragment {
     private View view;
     private RecyclerView home_rv;
-
+    private WorkBenchPresenter presenter;
 
     @Nullable
     @Override
@@ -34,22 +29,20 @@ public class WorkBenchFragment extends Fragment {
     }
 
     private void initUI(){
+
+
+
         home_rv = (RecyclerView) view.findViewById(R.id.home_Rv);
-        Resources res = this.getResources();
-        String [] texts ={"线索管理","机会管理","档案管理"};
-        Bitmap [] bitmaps ={BitmapFactory.decodeResource(res,R.mipmap.cuemanagement),BitmapFactory.decodeResource(res, R.mipmap.opportunity),BitmapFactory.decodeResource(res, R.mipmap.file)};
-        List<HomeIconModel> dataList = new ArrayList<>();
-        for (int i = 0;i < texts.length; i++){
-            HomeIconModel homeIconModel = new HomeIconModel();
-            homeIconModel.setText(texts[i]);
-            homeIconModel.setBitmap(bitmaps[i]);
-            dataList.add(homeIconModel);
-        }
-
-
-
-        final MyAdapter adapter = new MyAdapter(dataList);
+        presenter = new WorkBenchPresenter(getContext());
+        final MyAdapter adapter = new MyAdapter(presenter.getdata());
         home_rv.setAdapter(adapter);
+        adapter.setOnitemClickListener(new MyAdapter.OnitemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                presenter.intentActivity(view,position);
+            }
+        });
+
         final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 4);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -58,6 +51,9 @@ public class WorkBenchFragment extends Fragment {
             }
         });
         home_rv.setLayoutManager(layoutManager);
+
+
+
 
     }
 }

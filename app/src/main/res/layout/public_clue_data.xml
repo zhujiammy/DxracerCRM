@@ -7,7 +7,7 @@
     <LinearLayout
 
         android:orientation="vertical"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,6 +28,7 @@
                 android:text="@string/Customerinformation"
                 />
             <TextView
+                android:id="@+id/customerFullName"
                 android:layout_marginRight="25dp"
                 android:textSize="17sp"
                 android:gravity="right|center"
@@ -52,6 +53,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/customerIndustry"
                     android:layout_marginLeft="25dp"
                     android:gravity="center|left"
                     android:layout_width="match_parent"
@@ -62,6 +64,7 @@
                     android:text="行业: 数码、电脑"
                     />
                 <TextView
+                    android:id="@+id/customerScale"
                     android:layout_marginRight="25dp"
                     android:gravity="center|right"
                     android:layout_width="match_parent"
@@ -78,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/customerProvinceName"
                     android:layout_marginLeft="25dp"
                     android:gravity="center|left"
                     android:layout_width="match_parent"
@@ -127,6 +131,7 @@
                     android:text="创建人信息"
                     />
                 <TextView
+                    android:id="@+id/createPersonName"
                     android:layout_marginRight="25dp"
                     android:gravity="center|right"
                     android:layout_width="match_parent"
@@ -139,6 +144,7 @@
 
             </LinearLayout>
             <TextView
+                android:id="@+id/contactPersonNum"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -149,6 +155,7 @@
                 android:text="联系人数:  1"
                 />
             <TextView
+                android:id="@+id/contactsCommunicateNum"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -159,6 +166,7 @@
                 android:text="沟通次数:  1"
                 />
             <TextView
+                android:id="@+id/leadSource"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -169,6 +177,7 @@
                 android:text="获得渠道:  电话咨询"
                 />
             <TextView
+                android:id="@+id/customerShortName"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -178,17 +187,9 @@
                 android:textColor="@color/monsoon"
                 android:text="客户简称:  市民吕先生"
                 />
+
             <TextView
-                android:layout_marginLeft="25dp"
-                android:gravity="center|left"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textColor="@color/monsoon"
-                android:text="客户全称:  吕书套"
-                />
-            <TextView
+                android:id="@+id/leadNo"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -199,6 +200,7 @@
                 android:text="线索编号:  L2018-1105-00010"
                 />
             <TextView
+                android:id="@+id/existDays"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -209,6 +211,7 @@
                 android:text="已创建天数:  1"
                 />
             <TextView
+                android:id="@+id/leadGetDate"
                 android:layout_marginLeft="25dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
         setContentView(R.layout.login);
         //AndroidBug5497Workaround.assistActivity(this);
 
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this,LoginActivity.this);
         initView();
         initEvent();
     }
@@ -116,7 +116,6 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
     @Override
     public void failed() {
         progressDialog.dismiss();
-        Toast.makeText(this,"用户名或密码错误!",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -128,7 +127,7 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage(getResources().getString(R.string.progressDialog_login));
             progressDialog.show();
-            presenter.login(username_et.getText().toString(),password_et.getText().toString());
+            presenter.login("login",username_et.getText().toString(),password_et.getText().toString());
         }
 
     }
