@@ -5,4 +5,11 @@
         <attr name="cellWidth" format="dimension" />
         <attr name="cellHeight" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="IndexBar">
+        <attr name="letterSize" format="dimension" />
+        <attr name="letterColor" format="color" />
+        <attr name="focusLetterColor" format="color" />
+        <attr name="letterSpacingExtra" format="float" />
+    </declare-styleable>
 </resources>

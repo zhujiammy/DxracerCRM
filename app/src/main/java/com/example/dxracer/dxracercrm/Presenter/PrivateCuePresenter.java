@@ -8,7 +8,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapters;
+import com.example.dxracer.dxracercrm.Adapter.PrivateCueAdapter;
 import com.example.dxracer.dxracercrm.Interface.PrivateCueInterface;
 import com.example.dxracer.dxracercrm.Interface.PublicCueInterface;
 import com.example.dxracer.dxracercrm.Model.PublicCueMode;
@@ -138,7 +138,7 @@ public class PrivateCuePresenter {
                         publicCueMode = gson.fromJson(msg.obj.toString(),PublicCueMode.class);
                         int total = publicCueMode.getTotal();
                         beanList = publicCueMode.getList();
-                        privateCue.adapter = new PublicCueAdapters(beanList);
+                        privateCue.adapter = new PrivateCueAdapter(beanList,privateCue.getActivity());
                         privateCue.recyclerView.setAdapter(privateCue.adapter);
                         hasNext = publicCueMode.isHasNextPage();
                         if(total != 0){

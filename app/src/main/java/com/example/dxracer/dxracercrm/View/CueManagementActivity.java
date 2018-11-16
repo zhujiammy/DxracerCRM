@@ -80,6 +80,7 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
                 Toast.makeText(getApplicationContext(),"私有",Toast.LENGTH_SHORT).show();
             }else {
                 intent = new Intent(getApplicationContext(),AddCueActivity.class);
+                intent.putExtra("type","2");
                 startActivityForResult(intent,INTENT);
             }
         }
@@ -95,7 +96,7 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
 
                 case INTENT:
                     if(data.getStringExtra("statue").equals("1")){
-                        publicCue.onRefresh();
+                        publicCue.refreshLayout.autoRefresh();
                     }
                     break;
 

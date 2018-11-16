@@ -83,6 +83,20 @@
         <activity android:name=".View.AddCueActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
 
         </activity>
+
+        <activity android:name=".View.AddContactsActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.ContactsDetailsActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.CommunicationRecordActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.AddRecordActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

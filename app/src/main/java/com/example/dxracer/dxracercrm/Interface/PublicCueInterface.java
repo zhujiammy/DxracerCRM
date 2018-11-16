@@ -1,6 +1,5 @@
 package com.example.dxracer.dxracercrm.Interface;
 
-import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapters;
 import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 
 import java.util.List;

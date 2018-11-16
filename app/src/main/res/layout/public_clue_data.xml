@@ -231,6 +231,17 @@
 
             <TextView
                 android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/more_btn"
+                android:gravity="center"
                 android:text="更多"
                 android:layout_margin="11dp"
                 android:textColor="@color/monsoon"
@@ -240,22 +251,12 @@
                 android:layout_height="match_parent"
                 />
             <TextView
+                android:id="@+id/edit"
                 android:gravity="center"
                 android:text="编辑"
                 android:layout_margin="8dp"
                 android:background="@drawable/textview_rectangle"
                 android:textColor="@color/blue1"
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-            <TextView
-                android:gravity="center"
-                android:text="删除"
-                android:layout_margin="8dp"
-                android:background="@drawable/textview_rectangle"
-                android:textColor="@color/red"
                 android:layout_weight="1"
                 android:textSize="13sp"
                 android:layout_width="match_parent"

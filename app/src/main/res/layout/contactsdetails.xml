@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/blue1"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ToolbarTheme">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <ScrollView
+        android:layout_below="@id/appbar"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_margin="20dp"
+                android:background="@drawable/info_line"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/personName"
+                                android:layout_margin="10dp"
+                                android:textColor="@color/BLAK"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="张强"
+                                />
+
+                            <ImageView
+                                android:id="@+id/sex"
+                                android:src="@mipmap/m"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_margin="10dp"
+                                android:textColor="@color/BLAK"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="职位:"
+                                />
+                            <TextView
+                                android:id="@+id/position"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:textColor="@color/BLAK"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="联合国秘书长"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_weight="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:src="@mipmap/businesscards"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:textColor="@color/BLAK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="称呼:"
+                        />
+                    <TextView
+                        android:id="@+id/nickName"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/BLAK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="吕秘书长"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="个人信息"
+                        android:textSize="18sp"
+                        android:textColor="@color/BLAK"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="电话"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:textColor="@color/monsoon"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/mobile"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/BLAK"
+                        android:text="+86-18552026533"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                </LinearLayout>
+                <View
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="电子邮箱"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:textColor="@color/monsoon"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/BLAK"
+                        android:text="lvshutao@hotmail.com"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                </LinearLayout>
+                <View
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="微信号"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:textColor="@color/monsoon"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/wechat"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/BLAK"
+                        android:text="lvshutao"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                </LinearLayout>
+                <View
+                    android:background="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="生日"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:textColor="@color/monsoon"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/birthday"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/BLAK"
+                        android:text="1994-08-17"
+                        android:layout_marginLeft="14dp"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+<LinearLayout
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            app:elevation="8dp"
+            android:src="@mipmap/msg"
+            android:clickable="true"
+            android:backgroundTint="@color/blue1"
+            android:background="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/blue"
+            />
+        <TextView
+
+            android:padding="5dp"
+            android:textColor="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发短信"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            app:elevation="8dp"
+            android:src="@mipmap/mb"
+            android:clickable="true"
+            android:backgroundTint="@color/blue1"
+            android:background="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/blue"
+            />
+        <TextView
+
+            android:padding="5dp"
+            android:textColor="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打电话"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            app:elevation="8dp"
+            android:src="@mipmap/em"
+            android:clickable="true"
+            android:backgroundTint="@color/blue1"
+            android:background="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/blue"
+            />
+        <TextView
+
+            android:padding="5dp"
+            android:textColor="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发邮件"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/Communication_bt"
+            app:elevation="8dp"
+            android:src="@mipmap/gtjl"
+            android:clickable="true"
+            android:backgroundTint="@color/blue1"
+            android:background="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/blue"
+            />
+        <TextView
+
+            android:padding="5dp"
+            android:textColor="@color/blue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="沟通记录"
+            />
+    </LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>

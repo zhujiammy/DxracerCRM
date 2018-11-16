@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.dxracer.dxracercrm.Tools.SharedPreferencesUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -23,6 +24,8 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -202,6 +205,75 @@ public class NetUtils {
 
             }
         });
+    }
+
+
+
+    /**
+     * post请求，异步方式，提交数据，是在子线程中执行的，需要切换到主线程才能更新UI、带addHeader,带文件上传功能
+     * @param url
+     * @param bodyParams
+     * @param myNetCall
+     */
+    public  void postDataAsynToNetHeaderFileUpLoad(String url, Map<String,String> bodyParams, File file, final MyNetCall myNetCall) {
+        //1构造RequestBody
+        RequestBody body=setRequestBody(bodyParams);
+        //2 构造Request
+        Request.Builder requestBuilder = new Request.Builder();
+        Request request = requestBuilder.post(body).addHeader("Authorization",SharedPreferencesUtils.getInstance().getString(SharedPreferencesUtils.Authorization)).url(url).build();
+        //3 将Request封装为Call
+        Call call = mOkHttpClient.newCall(request);
+        //4 执行Call
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                myNetCall.failed(call,e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                myNetCall.success(call,response);
+
+            }
+        });
+    }
+
+    public  void uploadFile(String url, File file,String fileDatapart, String fileName,Map<String,String> params,final MyNetCall myNetCall) {
+        //创建OkHttpClient请求对象
+        //MultipartBody多功能的请求实体对象,,,formBody只能传表单形式的数据
+        MultipartBody.Builder requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+
+        //参数
+        if (params != null){
+            for (String key : params.keySet()){
+                requestBody.addFormDataPart(key,params.get(key));
+            }
+        }
+        //文件...参数name指的是请求路径中所接受的参数...如果路径接收参数键值是fileeeee,
+//此处应该改变
+        RequestBody fileBody1 = RequestBody.create(MediaType.parse("image/png") ,file);
+        requestBody.addFormDataPart(fileDatapart,fileName,fileBody1);
+
+        //构建
+
+        //创建Request
+        Request request = new Request.Builder().url(url).post(requestBody.build()).addHeader("Authorization",SharedPreferencesUtils.getInstance().getString(SharedPreferencesUtils.Authorization)).build();
+        //3 将Request封装为Call
+        Call call = mOkHttpClient.newCall(request);
+        //4 执行Call
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                myNetCall.failed(call,e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                myNetCall.success(call,response);
+
+            }
+        });
+
     }
 
 

@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapters;
+import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapter;
 import com.example.dxracer.dxracercrm.Interface.PublicCueInterface;
 import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
@@ -137,9 +137,9 @@ public class PublicCuePresenter {
                             publicCueMode = gson.fromJson(msg.obj.toString(),PublicCueMode.class);
                             int total = publicCueMode.getTotal();
                             beanList = publicCueMode.getList();
-                            publicCue.adapter = new PublicCueAdapters(beanList);
+                            publicCue.adapter = new PublicCueAdapter(beanList,publicCue);
                             publicCue.recyclerView.setAdapter(publicCue.adapter);
-                            publicCue.adapter.setOnitemClickListener(new PublicCueAdapters.OnitemClickListener() {
+                            publicCue.adapter.setOnitemClickListener(new PublicCueAdapter.OnitemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
 

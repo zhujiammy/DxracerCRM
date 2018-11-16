@@ -60,6 +60,7 @@ public class CitySelect1Activity extends RelativeLayout implements View.OnClickL
     private Context mContext;
     private City city;
     int last, current;
+    private String p,c,s;
 
     public CitySelect1Activity(Context context) {
         super(context);
@@ -91,11 +92,14 @@ public class CitySelect1Activity extends RelativeLayout implements View.OnClickL
             tvs[i].setOnClickListener(this);//选择对应城市的点击事件
         }
 
+
+
         if(city==null){
             city = new City();
             city.setProvince("");
             city.setCity("");
             city.setDistrict("");
+
         }else{
             if(city.getProvince()!=null&&!city.getProvince().equals("")){
                 tvs[0].setText(city.getProvince());//省
@@ -106,6 +110,8 @@ public class CitySelect1Activity extends RelativeLayout implements View.OnClickL
             if(city.getDistrict()!=null&&!city.getDistrict().equals("")){
                 tvs[2].setText(city.getDistrict());//县区
             }
+
+
         }
         //设置顶栏标题
         /* btn_right = (Button) findViewById(R.id.btn_right);
@@ -167,7 +173,6 @@ public class CitySelect1Activity extends RelativeLayout implements View.OnClickL
 
                 case 1:
                     System.out.println("省份列表what======" + msg.what);
-
                     regions = (ArrayList<MyRegion>) msg.obj;
                     adapter.clear();
                     adapter.addAll(regions);

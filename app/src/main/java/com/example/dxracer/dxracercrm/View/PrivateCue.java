@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
-import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapters;
+import com.example.dxracer.dxracercrm.Adapter.PrivateCueAdapter;
+import com.example.dxracer.dxracercrm.Adapter.PublicCueAdapter;
 import com.example.dxracer.dxracercrm.Interface.PrivateCueInterface;
 import com.example.dxracer.dxracercrm.Interface.PublicCueInterface;
 import com.example.dxracer.dxracercrm.Model.PublicCueMode;
@@ -32,7 +33,7 @@ public class PrivateCue extends Fragment implements PrivateCueInterface.View {
     public RecyclerViewEmptySupport recyclerView;
     public PrivateCuePresenter presenter;
     public RefreshLayout refreshLayout;
-    public PublicCueAdapters adapter;
+    public PrivateCueAdapter adapter;
 
 
     @Nullable
