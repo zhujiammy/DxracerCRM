@@ -1,5 +1,7 @@
 package com.example.dxracer.dxracercrm.Tools;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +38,14 @@ public class DateUtilsTool {
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);
         return res;
+    }
+
+    public static String Format(double d){
+
+        NumberFormat nf = new DecimalFormat("#,###.##");
+        String str = nf.format(d);
+
+        return str;
     }
 
 }

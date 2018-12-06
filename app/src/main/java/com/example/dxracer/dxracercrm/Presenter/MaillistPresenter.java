@@ -50,6 +50,7 @@ public class MaillistPresenter  {
     private int currentPage = 1;
     private int pageSize = 1000;
 
+
     public MaillistPresenter(final MaillistFragment maillistFragment, MaillistInterface.View view){
         this.maillistFragment = maillistFragment;
         this.view = view;
@@ -117,7 +118,7 @@ public class MaillistPresenter  {
         currentPage = 1;
         reqBody.put("currentPage", String.valueOf(currentPage));
         reqBody.put("pageSize", String.valueOf(pageSize));
-        reqBody.put("leadNo", "");
+        reqBody.put("leadNo","");
         reqBody.put("mainPerson", "");
         reqBody.put("personName", "");
         reqBody.put("mobile", "");
@@ -218,6 +219,7 @@ public class MaillistPresenter  {
             }
         }
     }
+
 
 
 

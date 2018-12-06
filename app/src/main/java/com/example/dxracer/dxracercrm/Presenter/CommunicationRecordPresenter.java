@@ -39,6 +39,7 @@ public class CommunicationRecordPresenter {
     private  List<CommunicationRecordModel.Recor> beanList1 = new ArrayList<>();
     private int currentPage = 1;
     private int pageSize = 10;
+    private int pages;
     private boolean hasNext;
 
     public CommunicationRecordPresenter(CommunicationRecordInterface.View view,CommunicationRecordActivity communicationRecordActivity){
@@ -87,7 +88,7 @@ public class CommunicationRecordPresenter {
     public void LoadMoreData(){
         HashMap<String, String> params = new HashMap<>();
         params.put("sort","ContactsCommunicate_communicateTime desc");
-        params.put("currentPage", String.valueOf(currentPage + 1));
+        params.put("currentPage", String.valueOf(++currentPage));
         params.put("pageSize", String.valueOf(pageSize));
         params.put("contactsPersonId", String.valueOf(communicationRecordActivity.id));
         new HttpUtils().PostAPI(Constant.APIURL+"contacts/communicate/list",params,new HttpUtils.HttpCallback() {
@@ -135,6 +136,7 @@ public class CommunicationRecordPresenter {
                             }
                         });
                         hasNext = communicationRecordModel.isHasNextPage();
+                        pages =  communicationRecordModel.getPages();
                         if(total != 0){
                             view.onRefresh();
                         }else {
@@ -144,18 +146,13 @@ public class CommunicationRecordPresenter {
                         break;
 
                     case 1:
-                        //GSON直接解析成对象
-                        //对象中拿到集合
-                        if(hasNext){
+                        if(currentPage<=pages){
                             communicationRecordModel  =gson.fromJson(msg.obj.toString(),CommunicationRecordModel.class);
-                            hasNext = communicationRecordModel.isHasNextPage();
-                            beanList1 = communicationRecordModel.getList();
-                            beanList.addAll(beanList1);
+                            beanList.addAll(communicationRecordModel.getList());
                             view.onLoadMore();
                         }else {
                             view.onNothingData();
                         }
-
                         break;
 
                 }

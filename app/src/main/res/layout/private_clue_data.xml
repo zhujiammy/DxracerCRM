@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/Customerinformation"
+                />
+            <TextView
+                android:id="@+id/customerFullName"
+                android:layout_marginRight="25dp"
+                android:textSize="17sp"
+                android:gravity="right|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="吕书涛"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/customerIndustry"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="行业: 数码、电脑"
+                    />
+                <TextView
+                    android:id="@+id/customerScale"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="1-10人"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/customerProvinceName"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="地址: 江苏省无锡市惠山区"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/dash_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="创建人信息"
+                    />
+                <TextView
+                    android:id="@+id/createPersonName"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="朱佳"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/contactPersonNum"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="联系人数:  1"
+                />
+            <TextView
+                android:id="@+id/contactsCommunicateNum"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="沟通次数:  1"
+                />
+            <TextView
+                android:id="@+id/leadSource"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="获得渠道:  电话咨询"
+                />
+            <TextView
+                android:id="@+id/customerShortName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="客户简称:  市民吕先生"
+                />
+
+            <TextView
+                android:id="@+id/leadNo"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="线索编号:  L2018-1105-00010"
+                />
+            <TextView
+                android:id="@+id/existDays"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="已创建天数:  1"
+                />
+            <TextView
+                android:id="@+id/leadGetDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="获得日期:  2018-11-05"
+                />
+
+            <TextView
+                android:id="@+id/followPersonName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="追踪人:  fff"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/more_btn"
+                android:gravity="center"
+                android:text="更多"
+                android:layout_margin="11dp"
+                android:textColor="@color/monsoon"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:id="@+id/edit"
+                android:gravity="center"
+                android:text="编辑"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_rectangle"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

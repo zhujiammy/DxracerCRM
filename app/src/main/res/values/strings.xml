@@ -22,4 +22,18 @@
     <string name="publiccue">公有线索</string>
     <string name="privatecue">私有线索</string>
 
+    <string name="Sampletobeconfirmed">样品确认</string>
+    <string name="Schemetobeconfirmed">方案确认</string>
+    <string name="Quotationtobeconfirmed">报价确认</string>
+    <string name="Contracttobeconfirmed">合同生成</string>
+    <string name="Opportunityhasbeencancelled">作废机会</string>
+    <string name="Allopportunities">所有机会</string>
+
+    <string name="ht_ysc">合同已生成</string>
+    <string name="ht_yyj">合同已邮寄</string>
+    <string name="ht_yhq">合同已回签</string>
+    <string name="ht_zxz">合同执行中</string>
+    <string name="ht_zxw">合同执行完</string>
+    <string name="ht_yzf">合同已作废</string>
+
 </resources>

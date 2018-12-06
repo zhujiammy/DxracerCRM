@@ -1,14 +1,18 @@
 package com.example.dxracer.dxracercrm.Presenter;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.dxracer.dxracercrm.Interface.AddRecordInterface;
@@ -29,9 +33,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hmy.popwindow.PopItemAction;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -58,6 +66,7 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
     private String contactsPerson;
     private String communicateType;
     private String communicateStage;
+    private String file;
 
     public AddRecordPresenter (AddRecordInterface.View view,AddRecordActivity addRecordActivity){
         this.addRecordActivity = addRecordActivity;
@@ -65,6 +74,7 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
         addRecordActivity.communicateTime.setOnClickListener(this);
         //获取当前日期
         getDate();
+        file = String.valueOf(mYear +(mMonth + 1) + mDay +mhour+mMinute+mSecond);
         addRecordActivity.communicateTime.setText(mYear + "-" + (mMonth + 1) + "-" + mDay +" "+mhour+":"+mMinute+":"+mSecond);
     }
 
@@ -303,7 +313,9 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
     Spinner.OnItemSelectedListener communicateTypelistener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            communicateStage = ((AddRecordModel)addRecordActivity.communicateStage.getSelectedItem()).getKey();
+            communicateType = ((AddRecordModel)addRecordActivity.communicateType.getSelectedItem()).getKey();
+            Log.e("TAG", "onItemSelected: "+communicateType );
+
         }
 
         @Override
@@ -317,7 +329,8 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
     Spinner.OnItemSelectedListener communicate_stagelistener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            communicateType = ((AddRecordModel)addRecordActivity.communicateType.getSelectedItem()).getKey();
+/*            communicateType = ((AddRecordModel)addRecordActivity.communicateType.getSelectedItem()).getKey();
+            Log.e("TAG", "onItemSelected: "+communicateType );*/
         }
 
         @Override
@@ -336,9 +349,9 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
             Toast.makeText(addRecordActivity,"联系方式不能为空",Toast.LENGTH_SHORT).show();
         } else if(TextUtils.isEmpty(addRecordActivity.communicateResult.getText().toString())){
             Toast.makeText(addRecordActivity,"跟进结果不能为空",Toast.LENGTH_SHORT).show();
-        }else if(communicateStage.equals("请选择")){
+        }/*else if(communicateStage.equals("请选择")){
             Toast.makeText(addRecordActivity,"跟进阶段不能为空",Toast.LENGTH_SHORT).show();
-        }
+        }*/
         else {
             reqBody.put("contactsPersonId",contactsPerson);
             reqBody.put("communicateType",communicateType);
@@ -350,24 +363,29 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
 
 
         NetUtils netUtils = NetUtils.getInstance();
-        netUtils.uploadFile(Constant.APIURL +"contacts/communicate/insert",addRecordActivity.file,"communicateFileImg",addRecordActivity.file.getAbsolutePath()+".png", reqBody, new NetUtils.MyNetCall() {
-            @Override
-            public void success(Call call, Response response) throws IOException {
-                String result = response.body().string();
-                // TODO Auto-generated method stub
-                com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
 
-                Message msg= Message.obtain(
-                        mHandler,0,result
-                );
-                mHandler.sendMessage(msg);
-            }
+                netUtils.uploadFile(Constant.APIURL +"contacts/communicate/insert",addRecordActivity.file,"communicateFileImg",file+".png", reqBody, new NetUtils.MyNetCall() {
+                    @Override
+                    public void success(Call call, Response response) throws IOException {
+                        String result = response.body().string();
+                        // TODO Auto-generated method stub
+                        com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
 
-            @Override
-            public void failed(Call call, IOException e) {
+                        Message msg= Message.obtain(
+                                mHandler,0,result
+                        );
+                        mHandler.sendMessage(msg);
+                    }
 
-            }
-        });
+                    @Override
+                    public void failed(Call call, IOException e) {
+
+                    }
+                });
+
+
+
+
 
     }
 
@@ -375,5 +393,51 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
     @Override
     public void onClick(View v) {
 
+        if(v == addRecordActivity.communicateTime){
+            DatePickerDialog datePickerDialog = new DatePickerDialog(addRecordActivity,
+                    R.style.MyDatePickerDialogTheme,
+                    new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            mYear = year;
+                            mMonth = month;
+                            mDay = dayOfMonth;
+                            String datetime = mYear + "-" + (mMonth + 1) + "-" + mDay;
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                            Date date = null;
+
+                            try {
+                                // 注意格式需要与上面一致，不然会出现异常
+                                date = sdf.parse(datetime);
+                                @SuppressLint("SimpleDateFormat") final String sdate=(new SimpleDateFormat("yyyy-MM-dd")).format(date);
+                                new TimePickerDialog(addRecordActivity,new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                        Date date1 = null;
+                                        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
+                                        String time = hourOfDay+":"+minute+":"+"00";
+                                        try {
+
+                                            date1 = sdf1.parse(time);
+                                            @SuppressLint("SimpleDateFormat") final String sdate1=(new SimpleDateFormat("HH:mm:ss")).format(date1);
+                                            addRecordActivity.communicateTime.setText(sdate+" "+sdate1);
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+                                    }
+                                },mhour, mMinute, true).show();
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    },
+                    mYear, mMonth, mDay);
+            datePickerDialog.show();
+
+        }
     }
 }

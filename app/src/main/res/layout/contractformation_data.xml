@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/Customerinformation"
+                />
+            <TextView
+                android:id="@+id/supplierName"
+                android:layout_marginRight="25dp"
+                android:textSize="17sp"
+                android:gravity="right|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="路人甲"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="合同编号:"
+                    />
+                <TextView
+                    android:id="@+id/contractNo"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="C2018-1203-00006"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/dash_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="创建人信息"
+                    />
+                <TextView
+                    android:id="@+id/createPerson"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="吴沛栋"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/monsoon"
+                    android:text="合同总金额:"
+                    />
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/contractFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/red"
+                    android:text="￥5,078.00:"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/monsoon"
+                    android:text="定金:"
+                    />
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/paymentDeposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/red"
+                    android:text="￥5,078.00:"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/monsoon"
+                    android:text="尾款:"
+                    />
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/paymentFinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/red"
+                    android:text="￥5,078.00:"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/opppPriceNo"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同编号:   2018-12-03"
+                />
+
+            <TextView
+                android:id="@+id/createDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="创建日期:   2018-12-03"
+                />
+            <TextView
+                android:id="@+id/signDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同回签日期:   2018-12-04"
+                />
+
+            <TextView
+                android:id="@+id/excuteDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同执行日期:   2018-12-04"
+                />
+
+            <TextView
+                android:id="@+id/finishedDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同完成日期:   2018-12-04"
+                />
+
+
+            <TextView
+                android:id="@+id/contractManagePerson"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同管理人:   2018-12-04"
+                />
+            <TextView
+                android:id="@+id/contractManagePlace"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同存放位置:   2018-12-04"
+                />
+
+            <TextView
+                android:id="@+id/genDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同生成日期:   2018-12-04"
+                />
+
+            <TextView
+                android:id="@+id/sendDate"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="合同邮寄日期:   2018-12-04"
+                />
+            <TextView
+                android:id="@+id/sendLogistic"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="快递公司:   2018-12-04"
+                />
+
+            <TextView
+                android:id="@+id/sendExpressNo"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="快递单号:   2018-12-04"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:id="@+id/Mailcontract_btn"
+                android:gravity="center"
+                android:text="邮寄合同"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_rectangle"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:id="@+id/Voidcontract_btn"
+                android:gravity="center"
+                android:text="作废合同"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_rectangle"
+                android:textColor="@color/red"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

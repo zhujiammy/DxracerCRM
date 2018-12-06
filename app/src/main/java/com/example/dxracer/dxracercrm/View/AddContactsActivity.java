@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.example.dxracer.dxracercrm.Interface.AddContactsInterface;
 import com.example.dxracer.dxracercrm.Presenter.AddContactsPresenter;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.MyBottomSheetDialog;
 
 import org.devio.takephoto.app.TakePhoto;
@@ -151,6 +152,8 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
     @Override
     public void succeed() {
         Toast.makeText(getApplicationContext(),"保存成功！",Toast.LENGTH_SHORT).show();
+        App app = (App)getApplication();
+        app.setMaillisRefresh(true);
         finish();
     }
 

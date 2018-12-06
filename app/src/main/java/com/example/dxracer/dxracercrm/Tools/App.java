@@ -26,6 +26,30 @@ public class App extends Application {
 
     private static Context context;
 
+    private boolean Refresh;//属否刷新
+    private boolean maillisRefresh;//联系人列表刷新
+
+    public static void setContext(Context context) {
+        App.context = context;
+    }
+
+    public boolean isRefresh() {
+        return Refresh;
+    }
+
+    public void setRefresh(boolean refresh) {
+        Refresh = refresh;
+    }
+
+
+    public boolean isMaillisRefresh() {
+        return maillisRefresh;
+    }
+
+    public void setMaillisRefresh(boolean maillisRefresh) {
+        this.maillisRefresh = maillisRefresh;
+    }
+
     public static Context getContext() {
         return context;
     }
@@ -34,6 +58,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context=getApplicationContext();
+
         //Fresco.initialize(this);
         //YoukuPlayerConfig.setClientIdAndSecret(*//*请修改成你自己的clientId和clientSecret*//*"792b1d08a5348d0d","9a98ce3841ae9f686fbea940a93b8167");
 

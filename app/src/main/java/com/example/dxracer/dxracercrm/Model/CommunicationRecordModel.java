@@ -10,6 +10,7 @@ public class CommunicationRecordModel {
     private boolean hasPreviousPage;//是否有上一页
     private int navigateLastPage;
     private int navigateFirstPage;
+    private int pages;
 
     private List<Recor> list;
 
@@ -179,5 +180,13 @@ public class CommunicationRecordModel {
 
     public void setList(List<Recor> list) {
         this.list = list;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }

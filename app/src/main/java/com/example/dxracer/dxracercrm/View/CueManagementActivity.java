@@ -3,6 +3,7 @@ package com.example.dxracer.dxracercrm.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,16 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dxracer.dxracercrm.R;
 
 //线索管理
 
-public class CueManagementActivity extends AppCompatActivity  implements View.OnClickListener {
+public class CueManagementActivity extends AppCompatActivity  /*implements View.OnClickListener */{
 
     private Toolbar toolbar;
     private FragmentManager manager;
@@ -28,13 +26,14 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
     private RadioButton publiccue_rb;
     private RadioButton privatecue_rb;
     public static final int  INTENT=1004;
+    public static final int  INTENT1=1005;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cuemanagement);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+      /*  toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,11 +60,11 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
         transaction.add(R.id.main_content,privateCue);
         transaction.show(publicCue);
         transaction.hide(privateCue);
-        transaction.commit();
+        transaction.commit();*/
 
     }
 
-    @Override
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -77,9 +76,11 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
         int id = item.getItemId();
         if(id == R.id.save_btn){
             if(publicCue.isHidden()){
-                Toast.makeText(getApplicationContext(),"私有",Toast.LENGTH_SHORT).show();
+                intent = new Intent(getApplicationContext(),AddPrivateCueActivity.class);
+                intent.putExtra("type","2");
+                startActivityForResult(intent,INTENT1);
             }else {
-                intent = new Intent(getApplicationContext(),AddCueActivity.class);
+                intent = new Intent(getApplicationContext(),AddPublicCueActivity.class);
                 intent.putExtra("type","2");
                 startActivityForResult(intent,INTENT);
             }
@@ -99,6 +100,11 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
                         publicCue.refreshLayout.autoRefresh();
                     }
                     break;
+                case INTENT1:
+                    if(data.getStringExtra("statue").equals("1")){
+                        privateCue.refreshLayout.autoRefresh();
+                    }
+                    break;
 
             }
         } catch (Exception e) {
@@ -106,6 +112,7 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
         }
 
     }
+
 
     @Override
     public void onClick(View v) {
@@ -127,5 +134,5 @@ public class CueManagementActivity extends AppCompatActivity  implements View.On
                 transaction.commit();
                 break;
         }
-    }
+    }*/
 }

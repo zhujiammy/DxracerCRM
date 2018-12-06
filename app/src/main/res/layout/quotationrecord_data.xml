@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="报价人"
+                />
+            <TextView
+                android:id="@+id/auditPersonName"
+                android:layout_marginRight="25dp"
+                android:textSize="17sp"
+                android:gravity="right|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="吴沛栋"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="报价单状态:"
+                    />
+                <TextView
+                    android:id="@+id/oppoBillStatus"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/yrk"
+                    android:text="已审核"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/oppoCreatePersonName"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="报价审批人：吴沛栋"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/dash_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="报价单号"
+                    />
+                <TextView
+                    android:id="@+id/oppoPriceNo"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="P2018-1203-00002"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/auditTime"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="报价日期:  2018-12-03"
+                />
+            <TextView
+                android:id="@+id/supplierCompanyName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="供应商公司名称:  迪瑞克斯座椅（江阴）有限公司"
+                />
+            <TextView
+                android:id="@+id/supplierContactsPersonName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="供应商联系人姓名:  吴沛栋"
+                />
+            <TextView
+                android:id="@+id/supplierContactsPersonMobile"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="供应商联系人电话:  15861601312"
+                />
+
+            <TextView
+                android:id="@+id/dealerCompanyName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="采购方公司名称:  吕志文"
+                />
+            <TextView
+                android:id="@+id/dealerContactsPersonName"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="采购方联系人姓名:  方丽静"
+                />
+            <TextView
+                android:id="@+id/oppoBillTotalFee"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/red"
+                android:text="产品费用:  ￥116,537.68"
+                />
+
+            <TextView
+                android:id="@+id/discountPoint"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="产品折扣率:  2%"
+                />
+            <TextView
+                android:id="@+id/oppoProductTotalFee"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/red"
+                android:text="报价总费用:  ￥116,537.68"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/edit"
+                android:gravity="center"
+                android:text="编辑"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_rectangle"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/more_btn"
+                android:gravity="center"
+                android:text="更多"
+                android:layout_margin="11dp"
+                android:textColor="@color/monsoon"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

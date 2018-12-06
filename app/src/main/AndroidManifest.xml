@@ -80,7 +80,11 @@
 
         </activity>
 
-        <activity android:name=".View.AddCueActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+        <activity android:name=".View.AddPublicCueActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.AddPrivateCueActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
 
         </activity>
 
@@ -95,6 +99,38 @@
 
         </activity>
         <activity android:name=".View.AddRecordActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.PublicCue" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.PrivateCue" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.SampleconFirmationActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.OpportunityCancellation" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.AddQuotationActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.ProductActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.QuotationDetailsActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.ContracttobeconfirmedActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.ContractFormationActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
 
         </activity>
     </application>

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ public class AddRecordActivity extends AppCompatActivity implements AddRecordInt
     public Spinner communicateStage;
     public TextView communicateTime;
     public EditText communicateResult;
+
+    private LinearLayout communicateStage_lin;
 
     public TakePhoto takePhoto;
     public File file;
@@ -92,6 +95,8 @@ public class AddRecordActivity extends AppCompatActivity implements AddRecordInt
         communicateResult = (EditText) findViewById(R.id.communicateResult);
         communicateFileImg = (ImageView) findViewById(R.id.communicateFileImg);
         communicateFileImg.setOnClickListener(this);
+        communicateStage_lin = (LinearLayout) findViewById(R.id.communicateStage_lin);
+        communicateStage_lin.setVisibility(View.GONE);
 
         leadNo.setText(intent.getStringExtra("leadNo"));
 

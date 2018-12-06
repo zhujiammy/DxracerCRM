@@ -1,19 +1,15 @@
 package com.example.dxracer.dxracercrm.Adapter;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dxracer.dxracercrm.Model.HomeIconModel;
 import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 import com.example.dxracer.dxracercrm.R;
-import com.example.dxracer.dxracercrm.View.AddCueActivity;
+import com.example.dxracer.dxracercrm.View.AddPublicCueActivity;
 import com.example.dxracer.dxracercrm.View.PublicCue;
 
 import java.util.List;
@@ -89,7 +85,7 @@ public class PublicCueAdapter extends RecyclerView.Adapter implements View.OnCli
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(publicCue.getContext(),AddCueActivity.class);
+                    Intent intent = new Intent(publicCue.getApplicationContext(),AddPublicCueActivity.class);
                     intent.putExtra("type","1");
                     intent.putExtra("leadGetDate",data.get(position).getLeadGetDate());
                     intent.putExtra("leadSource",data.get(position).getLeadSource());

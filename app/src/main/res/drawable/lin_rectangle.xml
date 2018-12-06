@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <solid android:color="@color/font_tab_1" />
+    <solid android:color="@color/btn_inf_f" />
 
     <stroke
         android:width="2px"
-        android:color="@color/font_tab_1" />
+        android:color="@color/btn_inf_f" />
 
     <corners
         android:bottomLeftRadius="0dp"

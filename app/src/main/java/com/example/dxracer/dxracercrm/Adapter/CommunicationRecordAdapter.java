@@ -1,26 +1,16 @@
 package com.example.dxracer.dxracercrm.Adapter;
 
-import android.content.Intent;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dxracer.dxracercrm.Model.CommunicationRecordModel;
-import com.example.dxracer.dxracercrm.Model.HomeIconModel;
-import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 import com.example.dxracer.dxracercrm.R;
-import com.example.dxracer.dxracercrm.View.AddCueActivity;
 import com.example.dxracer.dxracercrm.View.CommunicationRecordActivity;
-import com.example.dxracer.dxracercrm.View.PublicCue;
 
 import java.util.List;
-
-import static com.example.dxracer.dxracercrm.View.CueManagementActivity.INTENT;
 
 public class CommunicationRecordAdapter extends RecyclerView.Adapter implements View.OnClickListener {
     //数据源

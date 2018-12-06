@@ -15,6 +15,8 @@ public class PublicCueMode {
     private boolean hasPreviousPage;//是否有上一页
     private int navigateLastPage;
     private int navigateFirstPage;
+    private int pageNum;
+    private int pages;
     private List<Bean> list;
 
     public static class Bean {
@@ -40,6 +42,7 @@ public class PublicCueMode {
         public int leadCreateUserId;//创建人id
         public String createPersonName;//创建人
         public String leadCreateDate;//创建人日期
+        public String followPersonName;//追踪人
 
         public int getId() {
             return id;
@@ -216,6 +219,15 @@ public class PublicCueMode {
         public void setLeadCreateDate(String leadCreateDate) {
             this.leadCreateDate = leadCreateDate;
         }
+
+
+        public String getFollowPersonName() {
+            return followPersonName;
+        }
+
+        public void setFollowPersonName(String followPersonName) {
+            this.followPersonName = followPersonName;
+        }
     }
 
 
@@ -274,5 +286,21 @@ public class PublicCueMode {
 
     public void setNavigateFirstPage(int navigateFirstPage) {
         this.navigateFirstPage = navigateFirstPage;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }

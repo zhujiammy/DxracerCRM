@@ -251,8 +251,14 @@ public class NetUtils {
         }
         //文件...参数name指的是请求路径中所接受的参数...如果路径接收参数键值是fileeeee,
 //此处应该改变
-        RequestBody fileBody1 = RequestBody.create(MediaType.parse("image/png") ,file);
-        requestBody.addFormDataPart(fileDatapart,fileName,fileBody1);
+        if(file == null){
+            RequestBody fileBody1 = RequestBody.create(MediaType.parse("image/png") ,"");
+            requestBody.addFormDataPart(fileDatapart,fileName,fileBody1);
+        }else {
+            RequestBody fileBody1 = RequestBody.create(MediaType.parse("image/png") ,file);
+            requestBody.addFormDataPart(fileDatapart,fileName,fileBody1);
+        }
+
 
         //构建
 

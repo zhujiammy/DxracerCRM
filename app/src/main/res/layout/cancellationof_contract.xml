@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="合同作废"
+            android:textColor="@color/BLAK"
+            android:layout_marginLeft="20dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            />
+
+        <TextView
+            android:id="@+id/contractNo"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="合同编号:    C2018-1203-00006"
+            />
+        <TextView
+            android:id="@+id/supplierName"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="客户全称:    路人甲"
+            />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="作废原因:    "
+                />
+
+            <EditText
+                android:id="@+id/closeNote"
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/textview_backgroud"
+                android:layout_width="match_parent"
+                android:paddingLeft="5dp"
+                android:textColor="@color/BLAK"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/close_btn"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="关闭"
+                android:background="@drawable/cancel_button"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/save_btn"
+                android:background="@drawable/button_drawable"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

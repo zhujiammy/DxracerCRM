@@ -1,6 +1,6 @@
 package com.example.dxracer.dxracercrm.Interface;
 
-public interface AddCueInterface {
+public interface AddPrivateCueInterface {
 
     //view
     interface View{
@@ -13,5 +13,6 @@ public interface AddCueInterface {
         void loadgetDataListByType();//获取渠道
         void loadgetDataListByCustomerScale();//客户规模
         void loadgetDataListBycustomerindustry();//客户行业
+        void loadgetDataListByFollowPerson();//追踪人
     }
 }

@@ -120,6 +120,7 @@
                     android:layout_height="50dp" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/communicateStage_lin"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

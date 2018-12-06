@@ -2,6 +2,7 @@ package com.example.dxracer.dxracercrm.View;
 
 import android.Manifest;
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.dxracer.dxracercrm.Interface.MaillistInterface;
 import com.example.dxracer.dxracercrm.Model.MaillistModel;
 import com.example.dxracer.dxracercrm.Presenter.MaillistPresenter;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.RecyclerViewEmptySupport;
 import com.example.dxracer.dxracercrm.common.FloatingBarItemDecoration;
 import com.example.dxracer.dxracercrm.common.IndexBar;
@@ -56,6 +58,20 @@ public class MaillistFragment extends Fragment implements MaillistInterface.View
         presenter.fetchData();
         initView();
         return view;
+    }
+
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden){
+            App app = (App)getActivity().getApplication();
+            if(app.isMaillisRefresh()){
+                presenter.fetchData();
+                app.setMaillisRefresh(false);
+            }
+        }
     }
 
 

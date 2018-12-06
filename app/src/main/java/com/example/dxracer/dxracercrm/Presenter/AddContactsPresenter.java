@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.dxracer.dxracercrm.Interface.AddContactsInterface;
 import com.example.dxracer.dxracercrm.Model.AccessChannelsModel;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
@@ -45,8 +46,9 @@ public class AddContactsPresenter implements View.OnClickListener {
     private AddContactsInterface.View view;
     private java.util.Calendar cal;
     private int mYear,mMonth,mDay;
-    public String mainPerson;
-    public String sex;
+    public String mainPerson = "Y";
+    public String sex = "M";
+    public String file;
 
     public AddContactsPresenter(AddContactsInterface.View view,AddContactsActivity addContactsActivity){
 
@@ -55,6 +57,7 @@ public class AddContactsPresenter implements View.OnClickListener {
         addContactsActivity.birthday.setOnClickListener(this);
         //获取当前日期
         getDate();
+        file = String.valueOf(System.currentTimeMillis());
         addContactsActivity.birthday.setText(mYear + "-" + (mMonth + 1) + "-" + mDay);
         addContactsActivity.sex_group.setOnCheckedChangeListener(listener1);
         addContactsActivity.contact_group.setOnCheckedChangeListener(listener);
@@ -76,7 +79,7 @@ public class AddContactsPresenter implements View.OnClickListener {
             //根据ID获取RadioButton的实例
             RadioButton rb = (RadioButton)addContactsActivity.findViewById(radioButtonId);
             //更新文本内容，以符合选中项
-            if(rb.getText().equals("是")){
+            if(rb.getId() == R.id.Rb_Yes){
                 mainPerson ="Y";
             }else {
                 mainPerson ="N";
@@ -94,7 +97,7 @@ public class AddContactsPresenter implements View.OnClickListener {
             //根据ID获取RadioButton的实例
             RadioButton rb = (RadioButton)addContactsActivity.findViewById(radioButtonId);
             //更新文本内容，以符合选中项
-            if(rb.getText().equals("男")){
+            if(rb.getId() == R.id.Rb_m){
                 sex ="M";
             }else {
                 sex ="W";
@@ -132,7 +135,7 @@ public class AddContactsPresenter implements View.OnClickListener {
 
 
             NetUtils netUtils = NetUtils.getInstance();
-            netUtils.uploadFile(Constant.APIURL +"contacts/person/insert",addContactsActivity.file,"businessCardFile",addContactsActivity.file.getAbsolutePath()+".png", reqBody, new NetUtils.MyNetCall() {
+            netUtils.uploadFile(Constant.APIURL +"contacts/person/insert",addContactsActivity.file,"businessCardFile",file+".png", reqBody, new NetUtils.MyNetCall() {
                 @Override
                 public void success(Call call, Response response) throws IOException {
                     String result = response.body().string();
@@ -169,6 +172,7 @@ public class AddContactsPresenter implements View.OnClickListener {
                         }
                         if(code.equals("success")){
                             view.succeed();
+
 
                         }
                         break;

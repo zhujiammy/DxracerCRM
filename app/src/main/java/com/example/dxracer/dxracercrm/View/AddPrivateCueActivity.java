@@ -1,40 +1,32 @@
 package com.example.dxracer.dxracercrm.View;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dxracer.dxracercrm.Interface.AddCueInterface;
-import com.example.dxracer.dxracercrm.Model.AccessChannelsModel;
-import com.example.dxracer.dxracercrm.Presenter.AddCuePresenter;
+import com.example.dxracer.dxracercrm.Interface.AddPrivateCueInterface;
+import com.example.dxracer.dxracercrm.Presenter.AddPrivateCuePresenter;
+import com.example.dxracer.dxracercrm.Presenter.AddPublicCuePresenter;
 import com.example.dxracer.dxracercrm.R;
 import com.example.dxracer.dxracercrm.Tools.CitySelect1Activity;
 import com.hmy.popwindow.PopWindow;
 
-import org.json.JSONException;
+public class AddPrivateCueActivity extends AppCompatActivity implements AddPrivateCueInterface.View {
 
-public class AddCueActivity extends AppCompatActivity implements AddCueInterface.View {
-
-    private AddCuePresenter presenter;
+    private AddPrivateCuePresenter presenter;
     public Spinner Accesschannels;
     public Spinner Customersize;
     public Spinner Customerindustry;
+    public Spinner followPersonName;
     public TextView leadGetDate;
     public EditText customerShortName;
     public EditText customerFullName;
@@ -53,14 +45,15 @@ public class AddCueActivity extends AppCompatActivity implements AddCueInterface
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_cue);
+        setContentView(R.layout.addprivatecue);
         intent = getIntent();
         type = intent.getStringExtra("type");
         initUI();
-        presenter = new AddCuePresenter(this,this);
+        presenter = new AddPrivateCuePresenter(this,this);
         presenter.loadgetDataListByType();
         presenter.loadgetDataListByCustomerScale();
         presenter.loadgetDataListBycustomerindustry();
+        presenter.loadgetDataListByFollowPerson();
 
         edit();
 
@@ -84,6 +77,7 @@ public class AddCueActivity extends AppCompatActivity implements AddCueInterface
         Accesschannels = (Spinner) findViewById(R.id.Accesschannels);
         Customersize = (Spinner) findViewById(R.id.Customersize);
         Customerindustry = (Spinner) findViewById(R.id.Customerindustry);
+        followPersonName = (Spinner) findViewById(R.id.followPersonName);
         leadGetDate = (TextView) findViewById(R.id.leadGetDate);
         selectAddress = (TextView) findViewById(R.id.selectAddress);
         customerShortName = (EditText) findViewById(R.id.customerShortName);
@@ -100,7 +94,7 @@ public class AddCueActivity extends AppCompatActivity implements AddCueInterface
         //编辑时初始数据
         if(type.equals("1")){
             //编辑
-            toolbar_title.setText("编辑公有线索");
+            toolbar_title.setText("编辑私有线索");
             //获得日期
             leadGetDate.setText(intent.getStringExtra("leadGetDate"));
             //客户简称
@@ -116,7 +110,7 @@ public class AddCueActivity extends AppCompatActivity implements AddCueInterface
         }
         else{
             //编辑
-            toolbar_title.setText("新增公有线索");
+            toolbar_title.setText("新增私有线索");
 
         }
     }
