@@ -28,43 +28,87 @@ import com.example.dxracer.dxracercrm.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsListAdapter extends RecyclerView.Adapter {
+public class ContactsListAdapter extends RecyclerView.Adapter implements View.OnClickListener {
     private List<MaillistModel.MaillistBean> mList;
     private LayoutInflater mLayoutInflater;
-    private OnContactsBeanClickListener mOnClickListener;
+    public static final int VIEW_TYPE_ITEM = 1;
+    public static final int VIEW_TYPE_EMPTY = 0;
+
 
     public ContactsListAdapter(LayoutInflater layoutInflater, List<MaillistModel.MaillistBean> list) {
         this.mList = list;
         mLayoutInflater = layoutInflater;
     }
 
-    public void setOnContactsBeanClickListener(OnContactsBeanClickListener listener) {
-        mOnClickListener = listener;
+    private OnitemClickListener onitemClickListener=null;
+
+    public void setOnitemClickListener(OnitemClickListener onitemClickListener) {
+        this.onitemClickListener = onitemClickListener;
+    }
+    @Override
+    public void onClick(View v) {
+        if(onitemClickListener!=null){
+            onitemClickListener.onItemClick(v,(int)v.getTag());
+        }
+    }
+    public static interface OnitemClickListener{
+        void onItemClick(View view, int position);
     }
 
-    private MaillistModel.MaillistBean getItem(int position) {
-        return mList.get(position);
-    }
+
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ContactsViewHolder(
-                mLayoutInflater.inflate(R.layout.listitem_share_contact_content, parent, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        //在onCreateViewHolder方法中，我们要根据不同的ViewType来返回不同的ViewHolder
+        if (viewType == VIEW_TYPE_EMPTY) {
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.empty_view_tab, viewGroup, false);
+            return new RecyclerView.ViewHolder(view) {
+            };
+        }
+
+        View baseView;
+        baseView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.listitem_share_contact_content, viewGroup, false);
+        ContactsViewHolder bodyViewHolder = new ContactsViewHolder(baseView);
+        baseView.setOnClickListener(this);
+        return bodyViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MaillistModel.MaillistBean target = getItem(position);
         if (holder instanceof ContactsViewHolder) {
-            ((ContactsViewHolder) holder).bindBean(target);
-        } else {
-            throw new IllegalStateException("Illegal state Exception onBindviewHolder");
+            ((ContactsViewHolder) holder).nameTx.setText(mList.get(position).getPersonName());
+            ((ContactsViewHolder) holder).phoneTv.setText(mList.get(position).getPosition());
+
         }
+        holder.itemView.setTag(position);
     }
 
+    /**
+     * 总条目数量是数据源数量+1，因为我们有个Header
+     * @return
+     */
     @Override
     public int getItemCount() {
+        if (mList.size() == 0) {
+            return 1;
+        }
         return mList.size();
+    }
+    /**
+     *
+     * 复用getItemViewType方法，根据位置返回相应的ViewType
+     * @param position
+     * @return
+     */
+    @Override
+    public int getItemViewType(int position) {
+        //如果是0，就是头，否则则是其他的item
+
+        if (mList.size() == 0) {
+            return VIEW_TYPE_EMPTY;
+        }
+        //如果有数据，则使用ITEM的布局
+        return VIEW_TYPE_ITEM;
     }
 
     private class ContactsViewHolder extends RecyclerView.ViewHolder {
@@ -77,20 +121,8 @@ public class ContactsListAdapter extends RecyclerView.Adapter {
             phoneTv = (TextView) itemView.findViewById(R.id.list_item_contact_number);
         }
 
-        void bindBean(final MaillistModel.MaillistBean bean) {
-            nameTx.setText(bean.getPersonName());
-            phoneTv.setText(bean.getPosition());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mOnClickListener.onContactsBeanClicked(bean);
-                }
-            });
-        }
     }
 
-    public interface OnContactsBeanClickListener {
-        void onContactsBeanClicked(MaillistModel.MaillistBean bean);
-    }
+
 }
 

@@ -65,7 +65,7 @@
         android:name=".Tools.App"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".View.LoginActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+        <activity android:name=".View.LoginActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,7 +73,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.MainActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+        <activity android:name=".View.MainActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait" android:launchMode="singleTask">
 
         </activity>
         <activity android:name=".View.CueManagementActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
@@ -133,6 +133,26 @@
         <activity android:name=".View.ContractFormationActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
 
         </activity>
+
+        <activity android:name=".View.ClueDetailsActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.OpportunityDetailsActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.OrderDetails" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.EditAddress" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".View.PersonalInformationActivity" android:theme="@style/AppTheme1" android:screenOrientation="portrait">
+
+        </activity>
+
     </application>
 
 </manifest>

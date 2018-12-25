@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="合同编号"
+                />
+            <TextView
+                android:id="@+id/contractNo"
+                android:layout_marginRight="25dp"
+                android:textSize="17sp"
+                android:gravity="right|center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="S2018-1205-00001"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="地址类型:"
+                    />
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/monsoon"
+                    android:text="收货地址"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/dash_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="联系人"
+                    />
+                <TextView
+                    android:id="@+id/person"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="郭襄"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                >
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="联系电话:"
+                    />
+
+                <TextView
+                    android:id="@+id/mobile"
+                    android:textColor="@color/monsoon"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="18551049547"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                >
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="省  市  区:"
+                    />
+
+                <TextView
+                    android:id="@+id/Province_city"
+                    android:textColor="@color/monsoon"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="江苏省 无锡市 滨湖区"
+                    />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/addr"
+                android:layout_marginLeft="25dp"
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:textColor="@color/monsoon"
+                android:text="详细地址:  惠山大道6666号"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/lin_rectangle1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/edit"
+                android:gravity="center"
+                android:text="编辑"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_rectangle"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:background="@drawable/textview_rectangle"
+                android:id="@+id/edit_addr"
+                android:gravity="center"
+                android:text="修改"
+                android:layout_margin="11dp"
+                android:textColor="@color/monsoon"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

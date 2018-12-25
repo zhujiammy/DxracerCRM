@@ -12,6 +12,7 @@ import com.example.dxracer.dxracercrm.Adapter.CommunicationRecordAdapter;
 import com.example.dxracer.dxracercrm.Interface.CommunicationRecordInterface;
 import com.example.dxracer.dxracercrm.Presenter.CommunicationRecordPresenter;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.RecyclerViewEmptySupport;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -73,6 +74,16 @@ public class CommunicationRecordActivity extends AppCompatActivity implements Co
     @Override
     public void succeed() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        App app = (App)getApplication();
+        if(app.isIsrecordRefresh()){
+            refreshLayout.autoRefresh();
+            app.setIsrecordRefresh(false);
+        }
+        super.onResume();
     }
 
     @Override

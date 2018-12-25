@@ -110,6 +110,9 @@ public class AddContactsPresenter implements View.OnClickListener {
     public void SaveData(){
         //构造请求参数
         Map<String, String> reqBody = new ConcurrentSkipListMap<>();
+        if(addContactsActivity.intent.getStringExtra("type").equals("1")){
+            reqBody.put("id", String.valueOf(addContactsActivity.id));
+        }
         reqBody.put("leadNo",addContactsActivity.leadNo.getText().toString());
         reqBody.put("mainPerson",mainPerson);
         if(TextUtils.isEmpty(addContactsActivity.personName.getText().toString())){
@@ -134,6 +137,27 @@ public class AddContactsPresenter implements View.OnClickListener {
 
 
 
+        if(addContactsActivity.intent.getStringExtra("type").equals("1")){
+            NetUtils netUtils = NetUtils.getInstance();
+            netUtils.uploadFile(Constant.APIURL +"contacts/person/update",addContactsActivity.file,"businessCardFile",file+".png", reqBody, new NetUtils.MyNetCall() {
+                @Override
+                public void success(Call call, Response response) throws IOException {
+                    String result = response.body().string();
+                    // TODO Auto-generated method stub
+                    com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
+
+                    Message msg= Message.obtain(
+                            mHandler,0,result
+                    );
+                    mHandler.sendMessage(msg);
+                }
+
+                @Override
+                public void failed(Call call, IOException e) {
+
+                }
+            });
+        }else {
             NetUtils netUtils = NetUtils.getInstance();
             netUtils.uploadFile(Constant.APIURL +"contacts/person/insert",addContactsActivity.file,"businessCardFile",file+".png", reqBody, new NetUtils.MyNetCall() {
                 @Override
@@ -153,6 +177,8 @@ public class AddContactsPresenter implements View.OnClickListener {
 
                 }
             });
+        }
+
 
     }
 
@@ -171,6 +197,7 @@ public class AddContactsPresenter implements View.OnClickListener {
                             Toast.makeText(addContactsActivity,jsonObject.get("msg").getAsString(),Toast.LENGTH_SHORT).show();
                         }
                         if(code.equals("success")){
+
                             view.succeed();
 
 

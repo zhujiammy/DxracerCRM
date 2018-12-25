@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dxracer.dxracercrm.Model.ContractFormationModel;
@@ -80,7 +81,9 @@ public class ContractFormationAdapter extends RecyclerView.Adapter implements Vi
 
             ((lineViewHolder) holder).supplierName.setText(data.get(position).getSupplierName());
             ((lineViewHolder) holder).contractNo.setText(data.get(position).getContractNo());
-            ((lineViewHolder) holder).opppPriceNo.setText("合同编号:   "+data.get(position).getOpppPriceNo());
+            ((lineViewHolder) holder).leadNo.setText(data.get(position).getLeadNo());
+            ((lineViewHolder) holder).oppoBillNo.setText(data.get(position).getOppoBillNo());
+            ((lineViewHolder) holder).opppPriceNo.setText("报价单号:   "+data.get(position).getOpppPriceNo());
             ((lineViewHolder) holder).createPerson.setText(data.get(position).getCreatePerson());
             ((lineViewHolder) holder).contractFee.setText("  ¥"+DateUtilsTool.Format(data.get(position).getContractFee()));
             ((lineViewHolder) holder).paymentDeposit.setText("  ¥"+DateUtilsTool.Format(data.get(position).getPaymentDeposit()));
@@ -121,6 +124,24 @@ public class ContractFormationAdapter extends RecyclerView.Adapter implements Vi
                 ((lineViewHolder)holder).Voidcontract_btn.setVisibility(View.GONE);
             }
 
+            if(context.intent.getStringExtra("contractStatus").equals("100")){
+                ((lineViewHolder) holder).sendLogistic.setVisibility(View.GONE);
+                ((lineViewHolder) holder).sendExpressNo.setVisibility(View.GONE);
+                ((lineViewHolder) holder).excuteDate.setVisibility(View.GONE);
+                ((lineViewHolder) holder).finishedDate.setVisibility(View.GONE);
+                ((lineViewHolder) holder).Mailcontract_btn.setVisibility(View.GONE);
+                ((lineViewHolder)holder).Voidcontract_btn.setVisibility(View.GONE);
+
+                ((lineViewHolder)holder).paymentDeposit.setVisibility(View.GONE);
+                ((lineViewHolder)holder).paymentFinal.setVisibility(View.GONE);
+
+                ((lineViewHolder)holder).paymentDeposit_lin.setVisibility(View.GONE);
+                ((lineViewHolder)holder).paymentFinal_lin.setVisibility(View.GONE);
+
+                ((lineViewHolder)holder).leadNo_lin.setVisibility(View.VISIBLE);
+                ((lineViewHolder)holder).oppoBillNo_lin.setVisibility(View.VISIBLE);
+            }
+
             if(context.intent.getStringExtra("contractStatus").equals("300")){
                 ((lineViewHolder) holder).genDate.setVisibility(View.GONE);
                 ((lineViewHolder) holder).sendDate.setVisibility(View.GONE);
@@ -135,7 +156,7 @@ public class ContractFormationAdapter extends RecyclerView.Adapter implements Vi
             ((lineViewHolder) holder).Mailcontract_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    context.showPopwindowsMailcontract(data,position);
                 }
             });
 
@@ -206,8 +227,16 @@ public class ContractFormationAdapter extends RecyclerView.Adapter implements Vi
         private TextView contractManagePerson;
         private TextView contractManagePlace;
 
+        private TextView leadNo;
+        private TextView oppoBillNo;
+
         private TextView Mailcontract_btn;
         private TextView Voidcontract_btn;
+
+        private LinearLayout leadNo_lin;
+        private LinearLayout oppoBillNo_lin;
+        private LinearLayout paymentDeposit_lin;
+        private LinearLayout paymentFinal_lin;
 
         public lineViewHolder(View itemView) {
             super(itemView);
@@ -229,7 +258,13 @@ public class ContractFormationAdapter extends RecyclerView.Adapter implements Vi
             finishedDate = (TextView) itemView.findViewById(R.id.finishedDate);
             contractManagePerson = (TextView) itemView.findViewById(R.id.contractManagePerson);
             contractManagePlace = (TextView) itemView.findViewById(R.id.contractManagePlace);
+            leadNo = (TextView) itemView.findViewById(R.id.leadNo);
+            oppoBillNo = (TextView) itemView.findViewById(R.id.oppoBillNo);
 
+            leadNo_lin = (LinearLayout) itemView.findViewById(R.id.leadNo_lin);
+            oppoBillNo_lin = (LinearLayout) itemView.findViewById(R.id.oppoBillNo_lin);
+            paymentDeposit_lin = (LinearLayout) itemView.findViewById(R.id.paymentDeposit_lin);
+            paymentFinal_lin = (LinearLayout) itemView.findViewById(R.id.paymentFinal_lin);
             //点击按钮
             Mailcontract_btn = (TextView) itemView.findViewById(R.id.Mailcontract_btn);
             Voidcontract_btn = (TextView) itemView.findViewById(R.id.Voidcontract_btn);

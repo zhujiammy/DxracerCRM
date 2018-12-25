@@ -113,6 +113,7 @@ public class PublicCue extends AppCompatActivity implements PublicCueInterface.V
                     //新增联系人
                     case R.id.add_contacts:
                         intent = new Intent(getApplicationContext(),AddContactsActivity.class);
+                        intent.putExtra("type","0");//新增联系人
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
                         startActivity(intent);
                         break;
@@ -120,6 +121,7 @@ public class PublicCue extends AppCompatActivity implements PublicCueInterface.V
                     case R.id.add_record:
                         intent = new Intent(getApplicationContext(),AddRecordActivity.class);
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
+                        intent.putExtra("type","0");
                         startActivity(intent);
                         break;
                     //转入私有线索s

@@ -140,6 +140,7 @@ public class PrivateCue extends AppCompatActivity implements PrivateCueInterface
                     //新增联系人
                     case R.id.add_contacts:
                         intent = new Intent(PrivateCue.this,AddContactsActivity.class);
+                        intent.putExtra("type","0");//新增联系人
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
                         startActivity(intent);
                         break;
@@ -147,6 +148,7 @@ public class PrivateCue extends AppCompatActivity implements PrivateCueInterface
                     case R.id.add_record:
                         intent = new Intent(PrivateCue.this,AddRecordActivity.class);
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
+                        intent.putExtra("type","0");
                         startActivity(intent);
                         break;
                     //转入公有线索
@@ -209,7 +211,7 @@ public class PrivateCue extends AppCompatActivity implements PrivateCueInterface
         Intent intent ;
         int id = item.getItemId();
         if(id == R.id.save_btn){
-            intent = new Intent(getApplicationContext(),AddPublicCueActivity.class);
+            intent = new Intent(getApplicationContext(),AddPrivateCueActivity.class);
             intent.putExtra("type","2");
             startActivityForResult(intent,INTENT1);
 

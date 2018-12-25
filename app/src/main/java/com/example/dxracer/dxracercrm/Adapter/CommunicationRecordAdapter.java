@@ -1,5 +1,6 @@
 package com.example.dxracer.dxracercrm.Adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.dxracer.dxracercrm.Model.CommunicationRecordModel;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.View.AddRecordActivity;
 import com.example.dxracer.dxracercrm.View.CommunicationRecordActivity;
 
 import java.util.List;
@@ -73,7 +75,23 @@ public class CommunicationRecordAdapter extends RecyclerView.Adapter implements 
             ((BodyViewHolder) viewHolder).communicateStage.setText("跟进阶段:  "+data.get(position).getCommunicateStage());
             ((BodyViewHolder) viewHolder).communicateResult.setText("跟进结果:  "+data.get(position).getCommunicateResult());
             ((BodyViewHolder) viewHolder).createTime.setText("录入时间:  "+data.get(position).getCreateTime());
+            ((BodyViewHolder) viewHolder).edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //编辑沟通记录
+                  Intent  intent = new Intent(communicationRecordActivity,AddRecordActivity.class);
+                    intent.putExtra("leadNo",data.get(position).getLeadNo());
+                    intent.putExtra("type","1");
+                    intent.putExtra("contactsPersonName",data.get(position).getContactsPersonName());
+                    intent.putExtra("communicateType",data.get(position).getCommunicateType());
+                    intent.putExtra("communicateTime",data.get(position).getCommunicateTime());
+                    intent.putExtra("communicateResult",data.get(position).getCommunicateResult());
+                    String id = String.valueOf(data.get(position).getId());
+                    intent.putExtra("id",id);
 
+                    communicationRecordActivity.startActivity(intent);
+                }
+            });
 
         }
 

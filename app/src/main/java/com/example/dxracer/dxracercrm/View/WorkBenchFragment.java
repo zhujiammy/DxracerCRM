@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
@@ -17,6 +20,8 @@ import com.example.dxracer.dxracercrm.Adapter.MyAdapter;
 import com.example.dxracer.dxracercrm.Interface.WorkBenchInterface;
 import com.example.dxracer.dxracercrm.Presenter.WorkBenchPresenter;
 import com.example.dxracer.dxracercrm.R;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class WorkBenchFragment extends Fragment implements View.OnClickListener {
     private View view;
@@ -34,6 +39,11 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
     private LinearLayout Contractmailing_lin;
     private LinearLayout Executiocontract_lin;
     private LinearLayout contract_is_void_lin;
+    private LinearLayout Recordingclues_lin;
+    private LinearLayout Contractreturn_lin;
+    private LinearLayout Contractexecution_lin;
+    private CircleImageView profile_image;
+
 
     @Nullable
     @Override
@@ -56,6 +66,10 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
         Contractmailing_lin = (LinearLayout) view.findViewById(R.id.Contractmailing_lin);
         Executiocontract_lin = (LinearLayout)view.findViewById(R.id.Executiocontract_lin);
         contract_is_void_lin = (LinearLayout)view.findViewById(R.id.contract_is_void_lin);
+        Recordingclues_lin =(LinearLayout) view.findViewById(R.id.Recordingclues_lin);
+        Contractreturn_lin = (LinearLayout) view.findViewById(R.id.Contractreturn_lin);
+        Contractexecution_lin = (LinearLayout) view.findViewById(R.id.Contractexecution_lin);
+        profile_image = (CircleImageView) view.findViewById(R.id.profile_image);
 /*
 
         home_rv = (RecyclerView) view.findViewById(R.id.home_Rv);
@@ -90,7 +104,10 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
         Contractmailing_lin.setOnClickListener(this);
         Executiocontract_lin.setOnClickListener(this);
         contract_is_void_lin.setOnClickListener(this);
-
+        Recordingclues_lin.setOnClickListener(this);
+        Contractreturn_lin.setOnClickListener(this);
+        Contractexecution_lin.setOnClickListener(this);
+        profile_image.setOnClickListener(this);
     }
 
     @Override
@@ -135,6 +152,7 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
         if(v == Contracttobeconfirmed){
             //合同生成
             intent = new Intent(getActivity(),ContracttobeconfirmedActivity.class);
+            intent.putExtra("contractStatus","70");
             startActivity(intent);
 
         }
@@ -170,8 +188,24 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
             startActivity(intent);
         }
 
+        if(v == Contractreturn_lin){
+            //合同已回签
+            intent = new Intent(getActivity(),ContractFormationActivity.class);
+            intent.putExtra("contractStatus","100");
+            intent.putExtra("title","合同已回签");
+            startActivity(intent);
+        }
+
+        if(v == Contractexecution_lin){
+            //合同执行中
+            intent = new Intent(getActivity(),ContractFormationActivity.class);
+            intent.putExtra("contractStatus","200");
+            intent.putExtra("title","合同已邮寄");
+            startActivity(intent);
+        }
+
         if(v == Executiocontract_lin){
-            //合同已邮寄
+            //合同执行完
             intent = new Intent(getActivity(),ContractFormationActivity.class);
             intent.putExtra("contractStatus","300");
             intent.putExtra("title","合同执行完");
@@ -179,10 +213,21 @@ public class WorkBenchFragment extends Fragment implements View.OnClickListener 
         }
 
         if(v == contract_is_void_lin){
-            //合同已邮寄
+            //合同已作废
             intent = new Intent(getActivity(),ContractFormationActivity.class);
             intent.putExtra("contractStatus","00");
             intent.putExtra("title","合同已作废");
+            startActivity(intent);
+        }
+
+        if(v == Recordingclues_lin){
+            //录线索
+            new ConfirmPopWindow(getActivity()).showAtBottom(Recordingclues_lin);
+        }
+
+        if(v == profile_image){
+            //个人信息
+            intent = new Intent(getActivity(),PersonalInformationActivity.class);
             startActivity(intent);
         }
     }

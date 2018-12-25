@@ -132,6 +132,7 @@ public class SampleconFirmationActivity extends AppCompatActivity implements Sam
                     //新增联系人
                     case R.id.add_contacts:
                         intent = new Intent(SampleconFirmationActivity.this,AddContactsActivity.class);
+                        intent.putExtra("type","0");//新增联系人
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
                         startActivity(intent);
                         break;
@@ -139,6 +140,7 @@ public class SampleconFirmationActivity extends AppCompatActivity implements Sam
                     case R.id.add_record:
                         intent = new Intent(SampleconFirmationActivity.this,AddRecordActivity.class);
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
+                        intent.putExtra("type","0");
                         startActivity(intent);
                         break;
                     //转入公有线索

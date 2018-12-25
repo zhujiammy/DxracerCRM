@@ -20,6 +20,7 @@ import com.example.dxracer.dxracercrm.Model.AccessChannelsModel;
 import com.example.dxracer.dxracercrm.Model.AddRecordContactModel;
 import com.example.dxracer.dxracercrm.Model.AddRecordModel;
 import com.example.dxracer.dxracercrm.R;
+import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
@@ -75,7 +76,12 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
         //获取当前日期
         getDate();
         file = String.valueOf(mYear +(mMonth + 1) + mDay +mhour+mMinute+mSecond);
-        addRecordActivity.communicateTime.setText(mYear + "-" + (mMonth + 1) + "-" + mDay +" "+mhour+":"+mMinute+":"+mSecond);
+        if(addRecordActivity.intent.getStringExtra("type").equals("0")){
+            addRecordActivity.communicateTime.setText(mYear + "-" + (mMonth + 1) + "-" + mDay +" "+mhour+":"+mMinute+":"+mSecond);
+        }else {
+            addRecordActivity.communicateTime.setText(addRecordActivity.intent.getStringExtra("communicateTime"));
+        }
+
     }
 
     private void getDate(){
@@ -206,16 +212,16 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
                             addRecordActivity.communicateType.setOnItemSelectedListener(communicateTypelistener);
                         }
 
-                 /*       if(!addRecordActivity.type.equals("2")){
-                            //客户规模
-                            int a=arrayAdapter_customer_scale.getCount();
+                        if(addRecordActivity.intent.getStringExtra("type").equals("1")){
+                            int a=arrayAdapter_communicateType.getCount();
                             for(int j=0;j<a;j++){
-                                if(addCueActivity.intent.getStringExtra("customerScale").equals(arrayAdapter_customer_scale.getItem(j).getKey())){
-                                    addCueActivity.Customersize.setAdapter(arrayAdapter_customer_scale);
-                                    addCueActivity.Customersize.setSelection(j,true);
+                                if(addRecordActivity.intent.getStringExtra("communicateType").equals(arrayAdapter_communicateType.getItem(j).getKey())){
+                                    addRecordActivity.communicateType.setAdapter(arrayAdapter_communicateType);
+                                    addRecordActivity.communicateType.setSelection(j,true);
                                 }
                             }
-                        }*/
+                        }
+
 
                         break;
                     case 2:// 解析返回数据
@@ -232,16 +238,16 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
                             addRecordActivity.contactsPersonId.setAdapter(arrayAdapter_contactsPerson);
                             addRecordActivity.contactsPersonId.setOnItemSelectedListener(contactsPersonlistener);
                         }
-                      /*  if(!addCueActivity.type.equals("2")){
-                            //客户行业
-                            int c=arrayAdapter_customer_industry.getCount();
-                            for(int j=0;j<c;j++){
-                                if(addCueActivity.intent.getStringExtra("customerIndustry").equals(arrayAdapter_customer_industry.getItem(j).getKey())){
-                                    addCueActivity.Customerindustry.setAdapter(arrayAdapter_customer_industry);
-                                    addCueActivity.Customerindustry.setSelection(j,true);
+
+                        if(addRecordActivity.intent.getStringExtra("type").equals("1")){
+                            int a=arrayAdapter_contactsPerson.getCount();
+                            for(int j=0;j<a;j++){
+                                if(addRecordActivity.intent.getStringExtra("contactsPersonName").equals(arrayAdapter_contactsPerson.getItem(j).getPersonName())){
+                                    addRecordActivity.contactsPersonId.setAdapter(arrayAdapter_contactsPerson);
+                                    addRecordActivity.contactsPersonId.setSelection(j,true);
                                 }
                             }
-                        }*/
+                        }
 
                         break;
 
@@ -282,6 +288,21 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
                            // Toast.makeText(addCueActivity,jsonObject.get("msg").getAsString(),Toast.LENGTH_SHORT).show();
                         }
                         if(code1.equals("success")){
+                            view.succeed();
+
+                        }
+                        break;
+
+                    case 5:
+                        JsonObject jsonObject5 = (JsonObject)new JsonParser().parse(msg.obj.toString());
+                        String code5 = jsonObject5.get("code").getAsString();
+                        if(code5.equals("error")){
+                            view.failed();
+                            Toast.makeText(addRecordActivity,jsonObject5.get("msg").getAsString(),Toast.LENGTH_SHORT).show();
+                        }
+                        if(code5.equals("success")){
+                            App app = (App)addRecordActivity.getApplication();
+                            app.setIsrecordRefresh(true);
                             view.succeed();
 
                         }
@@ -343,6 +364,9 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
         //构造请求参数
         Map<String, String> reqBody = new ConcurrentSkipListMap<>();
         reqBody.put("leadNo",addRecordActivity.leadNo.getText().toString());
+        if(addRecordActivity.intent.getStringExtra("type").equals("1")){
+            reqBody.put("id",addRecordActivity.intent.getStringExtra("id"));
+        }
         if(contactsPerson.equals("0")){
             Toast.makeText(addRecordActivity,"联系人不能为空",Toast.LENGTH_SHORT).show();
         }else if(communicateType.equals("请选择")){
@@ -362,26 +386,50 @@ public class AddRecordPresenter implements AddRecordInterface.presenter,View.OnC
 
 
 
-        NetUtils netUtils = NetUtils.getInstance();
+        if(addRecordActivity.intent.getStringExtra("type").equals("0")){
+            NetUtils netUtils = NetUtils.getInstance();
 
-                netUtils.uploadFile(Constant.APIURL +"contacts/communicate/insert",addRecordActivity.file,"communicateFileImg",file+".png", reqBody, new NetUtils.MyNetCall() {
-                    @Override
-                    public void success(Call call, Response response) throws IOException {
-                        String result = response.body().string();
-                        // TODO Auto-generated method stub
-                        com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
+            netUtils.uploadFile(Constant.APIURL +"contacts/communicate/insert",addRecordActivity.file,"communicateFileImg",file+".png", reqBody, new NetUtils.MyNetCall() {
+                @Override
+                public void success(Call call, Response response) throws IOException {
+                    String result = response.body().string();
+                    // TODO Auto-generated method stub
+                    com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
 
-                        Message msg= Message.obtain(
-                                mHandler,0,result
-                        );
-                        mHandler.sendMessage(msg);
-                    }
+                    Message msg= Message.obtain(
+                            mHandler,0,result
+                    );
+                    mHandler.sendMessage(msg);
+                }
 
-                    @Override
-                    public void failed(Call call, IOException e) {
+                @Override
+                public void failed(Call call, IOException e) {
 
-                    }
-                });
+                }
+            });
+        }else {
+            NetUtils netUtils = NetUtils.getInstance();
+
+            netUtils.uploadFile(Constant.APIURL +"contacts/communicate/update",addRecordActivity.file,"communicateFileImg",file+".png", reqBody, new NetUtils.MyNetCall() {
+                @Override
+                public void success(Call call, Response response) throws IOException {
+                    String result = response.body().string();
+                    // TODO Auto-generated method stub
+                    com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",result,"header");
+
+                    Message msg= Message.obtain(
+                            mHandler,5,result
+                    );
+                    mHandler.sendMessage(msg);
+                }
+
+                @Override
+                public void failed(Call call, IOException e) {
+
+                }
+            });
+        }
+
 
 
 

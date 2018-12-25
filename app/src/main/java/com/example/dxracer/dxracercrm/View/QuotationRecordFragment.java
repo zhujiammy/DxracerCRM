@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class QuotationRecordFragment extends Fragment implements QuotationRecord
     public QuotationRecordAdapter adapter;
     public static final int  INTENT=1004;
     public String oppoBillNo;
+    public String oppoBillStatus;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class QuotationRecordFragment extends Fragment implements QuotationRecord
     public void onAttach(Context context) {
         super.onAttach(context);
         oppoBillNo = ((QuotationDetailsActivity)context).getoppoBillNo();
+        oppoBillStatus= ((QuotationDetailsActivity)context).getoppoBillStatus();
+        Log.e("TAG", "onAttach: "+oppoBillStatus );
     }
 
 

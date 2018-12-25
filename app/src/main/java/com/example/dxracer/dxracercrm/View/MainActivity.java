@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,38 +49,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initUI(){
-        tvToolTitle.setText(getResources().getString(R.string.news));
-        tvToolTitle.setTextColor(Color.WHITE);
+       // tvToolTitle.setText(getResources().getString(R.string.news));
+     //   tvToolTitle.setTextColor(Color.WHITE);
+        toolbar.setVisibility(View.GONE);
         PageBottomTabLayout tab = (PageBottomTabLayout) findViewById(R.id.tab);
         navigationController =tab.custom()
-                .addItem(newItem(R.mipmap.news,R.mipmap.news_selected,getResources().getString(R.string.news)))
-                .addItem(newItem(R.mipmap.maillist,R.mipmap.maillist_selected,getResources().getString(R.string.maillist)))
+               // .addItem(newItem(R.mipmap.news,R.mipmap.news_selected,getResources().getString(R.string.news)))
+
                 .addItem(newItem(R.mipmap.workbench,R.mipmap.workbench_selected,getResources().getString(R.string.workbench)))
-                .addItem(newItem(R.mipmap.statistics,R.mipmap.statistics_selected,getResources().getString(R.string.statistics)))
-                .addItem(newItem(R.mipmap.more,R.mipmap.more_selected,getResources().getString(R.string.more)))
+                .addItem(newItem(R.mipmap.maillist,R.mipmap.maillist_selected,getResources().getString(R.string.maillist)))
+                //.addItem(newItem(R.mipmap.statistics,R.mipmap.statistics_selected,getResources().getString(R.string.statistics)))
+                //.addItem(newItem(R.mipmap.more,R.mipmap.more_selected,getResources().getString(R.string.more)))
                 .build();
         navigationController.addTabItemSelectedListener(listener);
 
 
-        newsFragment = new NewsFragment();
+        //newsFragment = new NewsFragment();
         maillistFragment = new MaillistFragment();
         workBenchFragment = new WorkBenchFragment();
-        statisticsFragment = new StatisticsFragment();
-        moreFragment = new MoreFragment();
+        //statisticsFragment = new StatisticsFragment();
+       // moreFragment = new MoreFragment();
 
         manager=getSupportFragmentManager();
         //初次登陆，显示工作台，隐藏其他
         FragmentTransaction transaction=manager.beginTransaction();
-        transaction.add(R.id.main_content,newsFragment);
+        //transaction.add(R.id.main_content,newsFragment);
         transaction.add(R.id.main_content,maillistFragment);
         transaction.add(R.id.main_content,workBenchFragment);
-        transaction.add(R.id.main_content,statisticsFragment);
-        transaction.add(R.id.main_content,moreFragment);
-        transaction.show(newsFragment);
-        transaction.hide(moreFragment);
-        transaction.hide(statisticsFragment);
+        //transaction.add(R.id.main_content,statisticsFragment);
+       // transaction.add(R.id.main_content,moreFragment);
+       // transaction.show(newsFragment);
+        //transaction.hide(moreFragment);
+        //transaction.hide(statisticsFragment);
         transaction.hide(maillistFragment);
-        transaction.hide(workBenchFragment);
+        transaction.show(workBenchFragment);
         transaction.commit();
     }
 
@@ -101,28 +104,29 @@ public class MainActivity extends AppCompatActivity {
             switch (index){
                 //当选中首页id时，显示framelayout加载首页fragment
                 case 0:
-                    transaction.show(newsFragment);
+                   // transaction.show(newsFragment);
                     transaction.hide(maillistFragment);
-                    transaction.hide(workBenchFragment);
-                    transaction.hide(statisticsFragment);
-                    transaction.hide(moreFragment);
-                    toolbar.setVisibility(View.VISIBLE);
-                    tvToolTitle.setText(getResources().getString(R.string.news));
+                    transaction.show(workBenchFragment);
+                    //transaction.hide(statisticsFragment);
+                  //  transaction.hide(moreFragment);
+                    //toolbar.setVisibility(View.VISIBLE);
+                    toolbar.setVisibility(View.GONE);
+                    tvToolTitle.setText(getResources().getString(R.string.workbench));
                     transaction.commit();
                     break;
 
                 case 1:
 
-                    transaction.hide(newsFragment);
+                   // transaction.hide(newsFragment);
                     transaction.show(maillistFragment);
                     transaction.hide(workBenchFragment);
-                    transaction.hide(statisticsFragment);
-                    transaction.hide(moreFragment);
+                   // transaction.hide(statisticsFragment);
+                    //transaction.hide(moreFragment);
                     toolbar.setVisibility(View.VISIBLE);
                     tvToolTitle.setText(getResources().getString(R.string.maillist));
                     transaction.commit();
                     break;
-                case 2:
+              /*  case 2:
 
                     transaction.hide(newsFragment);
                     transaction.hide(maillistFragment);
@@ -160,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                     transaction.commit();
 
                     break;
-
+*/
 
             }
         }
@@ -170,4 +174,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            // 仿返回键退出界面,但不销毁，程序仍在后台运行
+            moveTaskToBack(false); // 关键的一行代码
+            return true;
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 }

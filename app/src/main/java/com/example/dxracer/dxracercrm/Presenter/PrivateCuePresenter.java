@@ -3,11 +3,13 @@ package com.example.dxracer.dxracercrm.Presenter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.dxracer.dxracercrm.Adapter.PrivateCueAdapter;
@@ -21,6 +23,7 @@ import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
 import com.example.dxracer.dxracercrm.Tools.SharedPreferencesUtils;
 import com.example.dxracer.dxracercrm.Tools.StringConverter;
+import com.example.dxracer.dxracercrm.View.ClueDetailsActivity;
 import com.example.dxracer.dxracercrm.View.PrivateCue;
 import com.example.dxracer.dxracercrm.View.PublicCue;
 import com.google.gson.Gson;
@@ -145,6 +148,14 @@ public class PrivateCuePresenter {
                         beanList = publicCueMode.getList();
                         privateCue.adapter = new PrivateCueAdapter(beanList,privateCue);
                         privateCue.recyclerView.setAdapter(privateCue.adapter);
+                        privateCue.adapter.setOnitemClickListener(new PrivateCueAdapter.OnitemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent = new Intent(privateCue,ClueDetailsActivity.class);
+                                intent.putExtra("leadNo",beanList.get(position).getLeadNo());
+                                privateCue.startActivity(intent);
+                            }
+                        });
                         hasNext = publicCueMode.isHasNextPage();
                         pages = publicCueMode.getPages();
                         if(total != 0){

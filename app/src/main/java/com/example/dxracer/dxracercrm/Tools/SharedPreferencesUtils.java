@@ -129,5 +129,8 @@ public class SharedPreferencesUtils {
 //建议 所有的Key 以为常量的形式保存在此类里面
 
     public static final String Authorization = "Authorization";//例如
+    public static final  String USER_NAME = "USER_NAME";
+    public static final  String PASSWORD = "PASSWORD";
+    public static final String remember = "remember";
 
 }

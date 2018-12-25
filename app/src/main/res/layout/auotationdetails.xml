@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:id="@+id/course_search_tablayout"
         app:tabGravity="fill"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabTextColor="#666666"
         app:tabSelectedTextColor="@color/blue1"
         app:tabIndicatorColor="@color/blue1"/>

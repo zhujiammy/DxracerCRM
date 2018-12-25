@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import com.example.dxracer.dxracercrm.Interface.LoginInterface;
 import com.example.dxracer.dxracercrm.Presenter.LoginPresenter;
@@ -22,6 +23,7 @@ import com.example.dxracer.dxracercrm.R;
 import com.example.dxracer.dxracercrm.Tools.AndroidBug5497Workaround;
 import com.example.dxracer.dxracercrm.Tools.ClearEditText;
 import com.example.dxracer.dxracercrm.Tools.IEditTextChangeListener;
+import com.example.dxracer.dxracercrm.Tools.SharedPreferencesUtils;
 import com.example.dxracer.dxracercrm.Tools.WorksSizeCheckUtil;
 
 public class LoginActivity extends AppCompatActivity  implements LoginInterface.View ,View.OnClickListener {
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
     private Intent intent;
+    private CheckBox remember;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -48,10 +51,29 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
     }
 
     private void initView(){
+        remember=(CheckBox)findViewById(R.id.remember);
         login_bt = (Button)findViewById(R.id.login_btn);
         login_bt.setEnabled(false);
         username_et = (ClearEditText)findViewById(R.id.username_et);
         password_et = (ClearEditText)findViewById(R.id.password_et);
+        //初始化用户名、密码，记住密码
+
+        String name = SharedPreferencesUtils.getInstance().getString(SharedPreferencesUtils.USER_NAME);
+        String pass = SharedPreferencesUtils.getInstance().getString(SharedPreferencesUtils.PASSWORD);
+        boolean choseRemember = SharedPreferencesUtils.getInstance().getBoolean(SharedPreferencesUtils.remember,false);
+
+        //如果上次记住了密码，那进入登陆页面自动勾选记住密码，并填上用户名密码
+        if(choseRemember){
+            username_et.setText(name);
+            password_et.setText(pass);
+            remember.setChecked(true);
+            login_bt.setBackground(getResources().getDrawable(R.drawable.loginbtn_drawable_enabled));
+            login_bt.setEnabled(true);
+        }else {
+            login_bt.setBackground(getResources().getDrawable(R.drawable.loginbtn_drawable));
+            login_bt.setEnabled(false);
+        }
+
         WorksSizeCheckUtil.textChangeListener textChangeListener = new WorksSizeCheckUtil.textChangeListener(login_bt);
         textChangeListener.addAllEditText(username_et,password_et);
         WorksSizeCheckUtil.setChangeListener(new IEditTextChangeListener() {
@@ -108,6 +130,15 @@ public class LoginActivity extends AppCompatActivity  implements LoginInterface.
     @Override
     public void succeed() {
         progressDialog.dismiss();
+        //保存密码
+        SharedPreferencesUtils.getInstance().putString(SharedPreferencesUtils.USER_NAME,username_et.getText().toString());
+        SharedPreferencesUtils.getInstance().putString(SharedPreferencesUtils.PASSWORD,password_et.getText().toString());
+        //是否记住密码
+        if(remember.isChecked()){
+            SharedPreferencesUtils.getInstance().putBoolean(SharedPreferencesUtils.remember,true);
+        }else {
+            SharedPreferencesUtils.getInstance().putBoolean(SharedPreferencesUtils.remember,false);
+        }
         intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();

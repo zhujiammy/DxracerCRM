@@ -2,6 +2,7 @@ package com.example.dxracer.dxracercrm.Presenter;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,7 @@ import com.example.dxracer.dxracercrm.R;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
+import com.example.dxracer.dxracercrm.View.ContactsDetailsActivity;
 import com.example.dxracer.dxracercrm.View.MaillistFragment;
 import com.example.dxracer.dxracercrm.common.FloatingBarItemDecoration;
 import com.example.dxracer.dxracercrm.common.IndexBar;
@@ -43,7 +45,7 @@ import okhttp3.Response;
 public class MaillistPresenter  {
 
     private MaillistFragment maillistFragment;
-    private LinkedHashMap<Integer,String> mHeaderList;
+    public LinkedHashMap<Integer,String> mHeaderList;
     private MaillistInterface.View view;
     public List<MaillistModel.MaillistBean> mContactList = new ArrayList<>();
     private  MaillistModel maillistModel;
@@ -111,7 +113,6 @@ public class MaillistPresenter  {
     }
 
     private void fetchContactList(){
-
         //构造请求参数
         Map<String, String> reqBody = new ConcurrentSkipListMap<>();
         reqBody.put("sort","ContactsPerson_id desc");
@@ -166,11 +167,32 @@ public class MaillistPresenter  {
                         //然后用上面一行写的gson来序列化和反序列化实体类type
                         maillistModel = gson.fromJson(msg.obj.toString(),MaillistModel.class);
                         //mContactList = maillistModel.getList();
+
                         for(int i = 0;i<maillistModel.getList().size();i++){
                             mContactList.add(new MaillistModel.MaillistBean(maillistModel.getList().get(i).getPersonName(),maillistModel.getList().get(i).getPosition(),maillistModel.getList().get(i).getMobile(),maillistModel.getList().get(i).getNickName(),maillistModel.getList().get(i).getEmail(),maillistModel.getList().get(i).getWechat(),maillistModel.getList().get(i).getBirthday(),
-                                    maillistModel.getList().get(i).getLeadNo(),maillistModel.getList().get(i).getSex(),maillistModel.getList().get(i).getId()));
+                                    maillistModel.getList().get(i).getLeadNo(),maillistModel.getList().get(i).getSex(),maillistModel.getList().get(i).getId(),maillistModel.getList().get(i).getMainPerson()));
 
                         }
+                        maillistFragment.mAdapter.notifyDataSetChanged();
+                        maillistFragment.mAdapter.setOnitemClickListener(new ContactsListAdapter.OnitemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent = new Intent(maillistFragment.getActivity(),ContactsDetailsActivity.class);
+                                intent.putExtra("id",mContactList.get(position).getId());
+                                intent.putExtra("personName",mContactList.get(position).getPersonName());
+                                intent.putExtra("nickName",mContactList.get(position).getNickName());
+                                intent.putExtra("position",mContactList.get(position).getPosition());
+                                intent.putExtra("sex",mContactList.get(position).getSex());
+                                intent.putExtra("mobile",mContactList.get(position).getMobile());
+                                intent.putExtra("email",mContactList.get(position).getEmail());
+                                intent.putExtra("wechat",mContactList.get(position).getWechat());
+                                intent.putExtra("birthday",mContactList.get(position).getBirthday());
+                                intent.putExtra("BusinessCar",mContactList.get(position).getBusinessCard());
+                                intent.putExtra("leadNo",mContactList.get(position).getLeadNo());
+                                intent.putExtra("mainPerson",mContactList.get(position).getMainPerson());
+                                maillistFragment.startActivity(intent);
+                            }
+                        });
                         Log.e("TAG", "handleMessage: "+maillistModel.getList().size());
                         Collections.sort(mContactList, new Comparator<MaillistModel.MaillistBean>() {
                             @Override
@@ -202,6 +224,7 @@ public class MaillistPresenter  {
             mHeaderList = new LinkedHashMap<>();
         }
         fetchContactList();
+
     }
 
     /**

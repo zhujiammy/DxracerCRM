@@ -27,7 +27,10 @@ public class App extends Application {
     private static Context context;
 
     private boolean Refresh;//属否刷新
+    private boolean contactsRefresh;//联系人详情刷新
     private boolean maillisRefresh;//联系人列表刷新
+    private boolean isrecordRefresh;//沟通记录列表刷新
+    private boolean iseditaddressRefresh;//地址列表刷新
 
     public static void setContext(Context context) {
         App.context = context;
@@ -41,6 +44,30 @@ public class App extends Application {
         Refresh = refresh;
     }
 
+
+    public boolean isContactsRefresh() {
+        return contactsRefresh;
+    }
+
+    public void setContactsRefresh(boolean contactsRefresh) {
+        this.contactsRefresh = contactsRefresh;
+    }
+
+    public boolean isIsrecordRefresh() {
+        return isrecordRefresh;
+    }
+
+    public void setIsrecordRefresh(boolean isrecordRefresh) {
+        this.isrecordRefresh = isrecordRefresh;
+    }
+
+    public boolean isIseditaddressRefresh() {
+        return iseditaddressRefresh;
+    }
+
+    public void setIseditaddressRefresh(boolean iseditaddressRefresh) {
+        this.iseditaddressRefresh = iseditaddressRefresh;
+    }
 
     public boolean isMaillisRefresh() {
         return maillisRefresh;

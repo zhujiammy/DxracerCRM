@@ -46,7 +46,6 @@ public class HttpUtils {
 
 
     private Context mContext;
-    private SharedPreferences sharedPreferences;
     public static String TAG="debug-okhttp";
     public static boolean isDebug=true;
     private OkHttpClient client;

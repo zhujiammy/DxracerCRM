@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="邮寄合同"
+            android:textColor="@color/BLAK"
+            android:layout_marginLeft="20dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            />
+
+        <TextView
+            android:id="@+id/contractNo"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="合同寄出快递公司:    顺丰快递"
+            />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="合同寄出快递单号:    "
+                />
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/sendExpressNo"
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/textview_backgroud"
+                android:layout_width="match_parent"
+                android:paddingLeft="5dp"
+                android:textColor="@color/BLAK"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="         合同寄出日期:    "
+                />
+
+            <TextView
+                android:gravity="center_vertical"
+                android:id="@+id/sendDate"
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/textview_backgroud"
+                android:layout_width="match_parent"
+                android:paddingLeft="5dp"
+                android:textColor="@color/BLAK"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/close_btn"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="关闭"
+                android:background="@drawable/cancel_button"
+                android:textColor="@color/blue1"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/save_btn"
+                android:background="@drawable/button_drawable"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

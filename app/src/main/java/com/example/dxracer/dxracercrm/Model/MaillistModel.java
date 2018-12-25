@@ -36,7 +36,7 @@ public class MaillistModel{
         private final String mAbbreviation;
         private final String mInitial;
 
-        public MaillistBean(String personName, String position,String mobile,String nickName,String email,String wechat,String birthday,String leadNo,String sex,int id){
+        public MaillistBean(String personName, String position,String mobile,String nickName,String email,String wechat,String birthday,String leadNo,String sex,int id,String mainPerson){
             this.personName = personName;
             this.mobile = mobile;
             this.position = position;
@@ -47,6 +47,7 @@ public class MaillistModel{
             this.leadNo = leadNo;
             this.sex = sex;
             this.id = id;
+            this.mainPerson = mainPerson;
             this.mAbbreviation = ContactsUtils.getAbbreviation(personName);
             this.mInitial = mAbbreviation.substring(0, 1);
         }

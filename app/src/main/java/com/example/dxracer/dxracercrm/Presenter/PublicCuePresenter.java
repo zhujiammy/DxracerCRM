@@ -3,6 +3,7 @@ package com.example.dxracer.dxracercrm.Presenter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -21,6 +22,7 @@ import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
 import com.example.dxracer.dxracercrm.Tools.SharedPreferencesUtils;
 import com.example.dxracer.dxracercrm.Tools.StringConverter;
+import com.example.dxracer.dxracercrm.View.ClueDetailsActivity;
 import com.example.dxracer.dxracercrm.View.CueManagementActivity;
 import com.example.dxracer.dxracercrm.View.PrivateCue;
 import com.example.dxracer.dxracercrm.View.PublicCue;
@@ -143,7 +145,9 @@ public class PublicCuePresenter {
                             publicCue.adapter.setOnitemClickListener(new PublicCueAdapter.OnitemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-
+                                    Intent intent = new Intent(publicCue,ClueDetailsActivity.class);
+                                    intent.putExtra("leadNo",beanList.get(position).getLeadNo());
+                                    publicCue.startActivity(intent);
                                 }
                             });
                             pages = publicCueMode.getPages();

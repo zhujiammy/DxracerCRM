@@ -77,6 +77,82 @@
 
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/leadNo_lin"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="线索编号:"
+                    />
+                <TextView
+                    android:id="@+id/leadNo"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="C2018-1203-00006"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/oppoBillNo_lin"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="机会编号:"
+                    />
+                <TextView
+                    android:id="@+id/oppoBillNo"
+                    android:layout_marginRight="25dp"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/BLAK"
+                    android:text="C2018-1203-00006"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
             android:background="@color/white"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -149,6 +225,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/paymentDeposit_lin"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
@@ -172,6 +249,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/paymentFinal_lin"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="40dp">

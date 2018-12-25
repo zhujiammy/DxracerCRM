@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/publiccue_lin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="公有线索"
+            android:textSize="16sp" />
+
+
+<View
+    android:background="@color/gray"
+    android:layout_width="match_parent"
+    android:layout_height="3dp"/>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/privatecue_lin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="私有线索"
+            android:textSize="16sp" />
+
+
+</LinearLayout>

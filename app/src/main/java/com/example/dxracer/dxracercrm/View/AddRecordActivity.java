@@ -57,7 +57,7 @@ public class AddRecordActivity extends AppCompatActivity implements AddRecordInt
 
     private Toolbar toolbar;
     public TextView toolbar_title;
-    private Intent intent;
+    public Intent intent;
     public InvokeParam invokeParam;
 
     @Override
@@ -99,6 +99,18 @@ public class AddRecordActivity extends AppCompatActivity implements AddRecordInt
         communicateStage_lin.setVisibility(View.GONE);
 
         leadNo.setText(intent.getStringExtra("leadNo"));
+
+        if(intent.getStringExtra("type").equals("0")){
+            toolbar_title.setText("新增沟通记录");
+        }
+        if(intent.getStringExtra("type").equals("1")){
+            toolbar_title.setText("编辑沟通记录");
+
+
+            communicateResult.setText(intent.getStringExtra("communicateResult"));
+
+        }
+
 
 
     }

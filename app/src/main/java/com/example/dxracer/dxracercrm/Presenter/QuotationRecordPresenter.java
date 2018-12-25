@@ -69,6 +69,7 @@ public class QuotationRecordPresenter {
         reqBody.put("currentPage", String.valueOf(currentPage));
         reqBody.put("pageSize", String.valueOf(pageSize));
         reqBody.put("oppoBillNo", fragment.oppoBillNo);
+        reqBody.put("oppoBillStatus", fragment.oppoBillStatus);
         NetUtils netUtils = NetUtils.getInstance();
         netUtils.postDataAsynToNetHeader(Constant.APIURL +"oppo/price/list", reqBody, new NetUtils.MyNetCall() {
             @Override
@@ -97,6 +98,7 @@ public class QuotationRecordPresenter {
         params.put("currentPage", String.valueOf(++currentPage));
         params.put("pageSize", String.valueOf(pageSize));
         params.put("oppoBillNo", fragment.oppoBillNo);
+        params.put("oppoBillStatus", fragment.oppoBillStatus);
         new HttpUtils().PostAPI(Constant.APIURL+"oppo/price/list",params,new HttpUtils.HttpCallback() {
 
             @Override

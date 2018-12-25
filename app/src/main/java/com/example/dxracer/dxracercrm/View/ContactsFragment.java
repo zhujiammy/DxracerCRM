@@ -64,19 +64,19 @@ public class ContactsFragment extends Fragment implements MaillistInterface.View
 
 
 
+
+
     @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if(!hidden){
-            App app = (App)getActivity().getApplication();
-            if(app.isMaillisRefresh()){
-                presenter.fetchData();
-                app.setMaillisRefresh(false);
-            }
+    public void onResume() {
+        App app = (App)getActivity().getApplication();
+        if(app.isMaillisRefresh()){
+            presenter.mContactList.clear();
+            presenter.fetchData();
+            mAdapter.notifyDataSetChanged();
+            app.setMaillisRefresh(false);
         }
+        super.onResume();
     }
-
-
 
     private void initView() {
         mRecyclerView = (RecyclerViewEmptySupport)view.findViewById(R.id.share_add_contact_recyclerview);
@@ -93,24 +93,6 @@ public class ContactsFragment extends Fragment implements MaillistInterface.View
     private void initAdapter() {
         mAdapter = new ContactsListAdapter(LayoutInflater.from(getActivity()),
                 presenter.mContactList);
-        mAdapter.setOnContactsBeanClickListener(new ContactsListAdapter.OnContactsBeanClickListener() {
-            @Override
-            public void onContactsBeanClicked(MaillistModel.MaillistBean bean) {
-                intent = new Intent(getActivity(),ContactsDetailsActivity.class);
-                intent.putExtra("id",bean.getId());
-                intent.putExtra("personName",bean.getPersonName());
-                intent.putExtra("nickName",bean.getNickName());
-                intent.putExtra("position",bean.getPosition());
-                intent.putExtra("sex",bean.getSex());
-                intent.putExtra("mobile",bean.getMobile());
-                intent.putExtra("email",bean.getEmail());
-                intent.putExtra("wechat",bean.getWechat());
-                intent.putExtra("birthday",bean.getBirthday());
-                intent.putExtra("BusinessCar",bean.getBusinessCard());
-                intent.putExtra("leadNo",bean.getLeadNo());
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

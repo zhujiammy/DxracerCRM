@@ -2,6 +2,7 @@ package com.example.dxracer.dxracercrm.Presenter;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -13,13 +14,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.dxracer.dxracercrm.Adapter.ContracttobeconfirmedAdapter;
-import com.example.dxracer.dxracercrm.Adapter.PrivateCueAdapter;
 import com.example.dxracer.dxracercrm.Interface.ContracttobeconfirmedInterface;
-import com.example.dxracer.dxracercrm.Model.AccessChannelsModel;
 import com.example.dxracer.dxracercrm.Model.ContracttobeconfirmedModel;
 import com.example.dxracer.dxracercrm.Model.DaysofpaymentModel;
 import com.example.dxracer.dxracercrm.Model.DepositratioModel;
-import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 import com.example.dxracer.dxracercrm.R;
 import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
@@ -27,6 +25,7 @@ import com.example.dxracer.dxracercrm.Tools.HttpUtils.HttpUtils;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
 import com.example.dxracer.dxracercrm.View.ContracttobeconfirmedActivity;
+import com.example.dxracer.dxracercrm.View.QuotationDetailsActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -185,6 +184,17 @@ public class ContracttobeconfirmedPresenter implements ContracttobeconfirmedInte
                         beanList = model.getList();
                         activity.adapter = new ContracttobeconfirmedAdapter(beanList,activity);
                         activity.recyclerView.setAdapter(activity.adapter);
+                        activity.adapter.setOnitemClickListener(new ContracttobeconfirmedAdapter.OnitemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent = new Intent(activity,QuotationDetailsActivity.class);
+                                intent.putExtra("leadNo",beanList.get(position).getLeadNo());
+                                intent.putExtra("contractStatus",activity.contractStatus);
+                                intent.putExtra("oppoBillNo",beanList.get(position).getOppoBillNo());
+                                intent.putExtra("contractNo",beanList.get(position).getContractNo());
+                                activity.startActivity(intent);
+                            }
+                        });
                         pages = model.getPages();
                         if(total != 0){
                             view.onRefresh();

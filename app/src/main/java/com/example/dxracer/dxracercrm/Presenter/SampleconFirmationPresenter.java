@@ -20,6 +20,7 @@ import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.HttpUtils;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
+import com.example.dxracer.dxracercrm.View.OpportunityDetailsActivity;
 import com.example.dxracer.dxracercrm.View.QuotationDetailsActivity;
 import com.example.dxracer.dxracercrm.View.SampleconFirmationActivity;
 import com.google.gson.Gson;
@@ -152,6 +153,37 @@ public class SampleconFirmationPresenter {
                                 if(sampleconFirmationActivity.intent.getStringExtra("oppoStatus").equals("60")){
                                     Intent intent = new Intent(sampleconFirmationActivity,QuotationDetailsActivity.class);
                                     intent.putExtra("leadNo",sampleModeList.get(position).getLeadNo());
+                                    intent.putExtra("oppoStatus","60");
+                                    intent.putExtra("oppoBillNo",sampleModeList.get(position).getOppoNo());
+                                    sampleconFirmationActivity.startActivity(intent);
+                                }
+
+                                if(sampleconFirmationActivity.intent.getStringExtra("oppoStatus").equals("40")){
+                                    Intent intent = new Intent(sampleconFirmationActivity,QuotationDetailsActivity.class);
+                                    intent.putExtra("leadNo",sampleModeList.get(position).getLeadNo());
+                                    intent.putExtra("oppoStatus","40");
+                                    sampleconFirmationActivity.startActivity(intent);
+                                }
+
+                                if(sampleconFirmationActivity.intent.getStringExtra("oppoStatus").equals("50")){
+                                    Intent intent = new Intent(sampleconFirmationActivity,QuotationDetailsActivity.class);
+                                    intent.putExtra("leadNo",sampleModeList.get(position).getLeadNo());
+                                    intent.putExtra("oppoStatus","50");
+                                    sampleconFirmationActivity.startActivity(intent);
+                                }
+
+                                if(sampleconFirmationActivity.intent.getStringExtra("oppoStatus").equals("00")){
+                                    Intent intent = new Intent(sampleconFirmationActivity,QuotationDetailsActivity.class);
+                                    intent.putExtra("leadNo",sampleModeList.get(position).getLeadNo());
+                                    intent.putExtra("oppoStatus","00");
+                                    intent.putExtra("oppoBillNo",sampleModeList.get(position).getOppoNo());
+                                    sampleconFirmationActivity.startActivity(intent);
+                                }
+
+                                if(sampleconFirmationActivity.intent.getStringExtra("oppoStatus").equals("")){
+                                    Intent intent = new Intent(sampleconFirmationActivity,QuotationDetailsActivity.class);
+                                    intent.putExtra("leadNo",sampleModeList.get(position).getLeadNo());
+                                    intent.putExtra("oppoStatus","00");
                                     intent.putExtra("oppoBillNo",sampleModeList.get(position).getOppoNo());
                                     sampleconFirmationActivity.startActivity(intent);
                                 }

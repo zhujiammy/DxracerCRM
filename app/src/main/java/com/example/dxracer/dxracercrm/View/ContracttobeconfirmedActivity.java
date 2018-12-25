@@ -54,11 +54,14 @@ public class ContracttobeconfirmedActivity extends AppCompatActivity implements 
     public   TextView Tailmoney;
     public  TextView contractFee;
     public String contractFeestr;
+    public String contractStatus;
+    private Intent intent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contracttobeconfirmed);
-
+        intent = getIntent();
+        contractStatus = intent.getStringExtra("contractStatus");
         presenter = new ContracttobeconfirmedPresenter(this,this);
         initUI();
     }
@@ -142,6 +145,7 @@ public class ContracttobeconfirmedActivity extends AppCompatActivity implements 
                     //新增联系人
                     case R.id.New_contacts:
                         intent = new Intent(getApplicationContext(),AddContactsActivity.class);
+                        intent.putExtra("type","0");//新增联系人
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
                         startActivity(intent);
                         break;
@@ -150,6 +154,7 @@ public class ContracttobeconfirmedActivity extends AppCompatActivity implements 
 
                         intent = new Intent(getApplicationContext(),AddRecordActivity.class);
                         intent.putExtra("leadNo",modes.get(i).getLeadNo());
+                        intent.putExtra("type","0");
                         startActivity(intent);
 
                         break;

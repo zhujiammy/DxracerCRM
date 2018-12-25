@@ -1,22 +1,23 @@
 package com.example.dxracer.dxracercrm.Presenter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.dxracer.dxracercrm.Adapter.ContractFormationAdapter;
-import com.example.dxracer.dxracercrm.Adapter.PrivateCueAdapter;
 import com.example.dxracer.dxracercrm.Interface.ContractFormationInterface;
 import com.example.dxracer.dxracercrm.Model.ContractFormationModel;
-import com.example.dxracer.dxracercrm.Model.PublicCueMode;
 import com.example.dxracer.dxracercrm.Tools.App;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.Constant;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.HttpUtils;
 import com.example.dxracer.dxracercrm.Tools.HttpUtils.NetUtils;
 import com.example.dxracer.dxracercrm.Tools.NullStringToEmptyAdapterFactory;
 import com.example.dxracer.dxracercrm.View.ContractFormationActivity;
+import com.example.dxracer.dxracercrm.View.QuotationDetailsActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -147,6 +148,30 @@ public class ContractFormationPresenter {
     }
 
 
+    public void Mailcontract(String id,String sendExpressNo,String sendDate){
+        //邮寄合同
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id",id);
+        params.put("sendLogistic","顺丰快递");
+        params.put("sendExpressNo",sendExpressNo);
+        params.put("sendDate",sendDate);
+        new HttpUtils().PostAPI(Constant.APIURL+"contract/bill/logistic",params,new HttpUtils.HttpCallback() {
+
+            @Override
+            public void onSuccess(String data) {
+                Log.e("TAG", "onSuccess: "+data );
+                // TODO Auto-generated method stub
+                com.example.dxracer.dxracercrm.Tools.Log.printJson("tag",data,"header");
+                Message msg= Message.obtain(
+                        mHandler,3,data
+                );
+                mHandler.sendMessage(msg);
+            }
+
+        });
+    }
+
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
@@ -166,6 +191,17 @@ public class ContractFormationPresenter {
                         beanList = contractFormationModel.getList();
                         activity.adapter = new ContractFormationAdapter(beanList,activity);
                         activity.recyclerView.setAdapter(activity.adapter);
+                        activity.adapter.setOnitemClickListener(new ContractFormationAdapter.OnitemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent = new Intent(activity,QuotationDetailsActivity.class);
+                                intent.putExtra("leadNo",beanList.get(position).getLeadNo());
+                                intent.putExtra("contractStatus",activity.contractStatus);
+                                intent.putExtra("oppoBillNo",beanList.get(position).getOppoBillNo());
+                                intent.putExtra("contractNo",beanList.get(position).getContractNo());
+                                activity.startActivity(intent);
+                            }
+                        });
                         pages = contractFormationModel.getPages();
                         if(total != 0){
                             view.onRefresh();

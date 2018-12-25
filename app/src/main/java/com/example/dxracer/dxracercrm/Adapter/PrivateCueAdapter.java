@@ -62,7 +62,7 @@ public class PrivateCueAdapter extends RecyclerView.Adapter implements View.OnCl
         }
 
         View baseView;
-        baseView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.public_clue_data, viewGroup, false);
+        baseView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.private_clue_data, viewGroup, false);
         lineViewHolder bodyViewHolder = new lineViewHolder(baseView);
         baseView.setOnClickListener(this);
         return bodyViewHolder;

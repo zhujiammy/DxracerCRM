@@ -50,7 +50,7 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
     private Toolbar toolbar;
     public TextView toolbar_title;
     //必要信息
-    public String id;//id
+    public int id;//id
     public TextView leadNo;//线索编号
     public RadioButton Rb_Yes,Rb_No;//是否默认联系人
     public EditText personName;//姓名
@@ -67,9 +67,10 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
     public EditText nickName;//称呼
     public EditText position;//职位
     public ImageView businessCardFile;//名片
+    private String sex,mainPerson;
 
     public TakePhoto takePhoto;
-    private Intent intent;
+    public Intent intent;
     public File file;
 
     @Override
@@ -126,6 +127,7 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
     }
 
     private  void  initUI(){
+
         toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         sex_group = (RadioGroup) findViewById(R.id.sex_group);
         contact_group = (RadioGroup)findViewById(R.id.contact_group);
@@ -145,6 +147,39 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
         businessCardFile.setOnClickListener(this);
 
         leadNo.setText(intent.getStringExtra("leadNo"));
+
+        if(intent.getStringExtra("type").equals("0")){
+            //新增联系人
+            toolbar_title.setText("新增联系人");
+        }
+
+        if(intent.getStringExtra("type").equals("1")){
+            //编辑联系人
+            toolbar_title.setText("编辑联系人");
+            id = intent.getIntExtra("id",0);
+            personName.setText(intent.getStringExtra("personName"));
+            position.setText(intent.getStringExtra("position"));
+            nickName.setText(intent.getStringExtra("nickName"));
+            mobile.setText(intent.getStringExtra("mobile"));
+            email.setText(intent.getStringExtra("email"));
+            wechat.setText(intent.getStringExtra("wechat"));
+            birthday.setText(intent.getStringExtra("birthday"));
+            sex = intent.getStringExtra("sex");
+            mainPerson = intent.getStringExtra("mainPerson");
+            if(intent.getStringExtra("sex").equals("M")){
+                Rb_m.setChecked(true);
+            }else {
+                Rb_w.setChecked(true);
+            }
+
+            if(intent.getStringExtra("mainPerson").equals("Y")){
+                Rb_Yes.setChecked(true);
+            }else {
+                Rb_No.setChecked(true);
+            }
+
+
+        }
     }
 
 
@@ -154,6 +189,22 @@ public class AddContactsActivity extends AppCompatActivity implements AddContact
         Toast.makeText(getApplicationContext(),"保存成功！",Toast.LENGTH_SHORT).show();
         App app = (App)getApplication();
         app.setMaillisRefresh(true);
+        app.setContactsRefresh(true);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("personName", personName.getText().toString());
+        bundle.putString("position", position.getText().toString());
+        bundle.putString("nickName", nickName.getText().toString());
+        bundle.putString("mobile", mobile.getText().toString());
+        bundle.putString("email", email.getText().toString());
+        bundle.putString("wechat", wechat.getText().toString());
+        bundle.putString("birthday", birthday.getText().toString());
+        bundle.putString("sex",presenter.sex);
+        bundle.putString("mainPerson", mainPerson);
+        Intent intent = new Intent();
+        intent.putExtras(bundle);
+        // 返回intent
+        setResult(RESULT_OK, intent);
         finish();
     }
 
